@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select your service</title>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/cust-profile.css">
+    <link href="../static/css/nav.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/templates/login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donate Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom scripts for this template -->
+    <script src="../static/js/nav.js"></script>
+
+    <!-- body -->
+    <div class="container profile">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card user-card">
+                    <div class="card-header">
+                        <h5>Profile</h5>
+                    </div>
+                    <div class="card-block">
+                        <div class="user-image">
+                            <img src="../static/pics/img-cust-profile/Intro.jpg" class="img-radius"
+                                alt="User-Profile-Image">
+                        </div>
+                        <h6 class="f-w-600 m-t-25 m-b-10">Rohit Kumar</h6>
+                        <p class="text-muted created"> Male | Created on 12.02.2021</p>
+                        <hr>
+
+
+                        <p class="m-t-15 text-muted email">Email ID: abc@exampl.com</p>
+                        <p class="m-t-15 text-muted phone">Phone: +91-9876543210</p>
+                        <p class="m-t-15 text-muted address">Address: Kankarbagh, Patna</p>
+                        <p class="m-t-15 text-muted address">State: Bihar</p>
+                        <p class="m-t-15 text-muted address">Country: India</p>
+                        <hr>
+                        <div class="mt-5 text-right" id="profile"><button class="btn btn-primary profile-button" type="button">
+                            <a style="color: white; text-decoration: none;" href="#edit-profile"> Edit
+                            Profile</a></button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 toggle" id="edit-profile" style="display: none;">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex flex-row align-items-center back"><i
+                                class="mr-1 mb-1"></i>
+                            <div id="back"><a href="#edit-profile" style="text-decoration: none; color:  white;"> ← Back to home</a></div>
+                        </div>
+                        <h6 class="text-right">Edit Profile</h6>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="first name"
+                                value="Rohit"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" value="Kumar" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Email"
+                                value="abc@exampl.com"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" value="+91-9876543210"
+                                placeholder="Phone number"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="address"
+                                value="Kankarbagh, Patna"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" value="Bihar" placeholder="State">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Country"
+                                value="India"></div>
+                        <div class="col-md-6"><select class="custom-select">
+                            <option selected>Choose gender..</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                            <option value="3">Other</option>
+                          </select></div>
+                    </div>
+                    <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button">Save
+                            Profile</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- javascript -->
+    <script>
+        $("#profile a").click(function(e){
+        e.preventDefault();
+        $(".toggle").hide();
+        var toShow = $(this).attr('href');
+        $(toShow).show();
+    });
+        $("#back a").click(function(e){
+        e.preventDefault();
+        // $(".toggle").show();
+        var toHide = $(this).attr('href');
+        $(toHide).hide();
+    });
+    </script>
+    
+    <!-- footer -->
+    <footer class="footer">
+        <div class="social">
+            <a href="#" class="facebook" title="Facebook"><img src="../Static/pics/img-footer/icons8-facebook-48.png"
+                    alt=""></a>
+            <a href="#" class="instagram" title="Instagram"><img src="../Static/pics/img-footer/icons8-instagram-50.png"
+                    alt=""></a>
+            <a href="#" class="email" title="Email"><img src="../Static/pics/img-footer/icons8-email-48.png" alt=""></a>
+            <a href="#" class="github" title="Github"><img src="../Static/pics/img-footer/icons8-github-90.png"
+                    alt=""></a>
+
+        </div>
+        <div id="copy">
+            <p class="copy">Copyright © CYNERGY 2021</p>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>

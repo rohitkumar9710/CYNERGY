@@ -1,0 +1,49 @@
+body{
+    background-image: url(../pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg);
+    height: auto;
+    background-repeat: repeat-y;
+
+}
+body{
+    background-color: #25274d;
+}
+.contact{
+    padding: 4%;
+    margin-top: 200px;
+    height: 400px;
+    margin-bottom: 500px;
+}
+.col-md-3{
+    background: #c6c6db;
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+    margin-top:10%;
+}
+.contact-info img{
+    margin-bottom: 15%;
+}
+.contact-info h2{
+    margin-bottom: 10%;
+}
+.col-md-9{
+    background: #fff;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.contact-form label{
+    font-weight:600;
+}
+.contact-form button{
+    background: #3c4096;
+    color: #fff;
+    font-weight: 600;
+    width: 25%;
+}
+.contact-form button:hover{
+    background: #272a68;
+    color: #fff;
+}
