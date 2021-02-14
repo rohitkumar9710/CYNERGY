@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'nav.css' %}" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&family=Lexend+Mega&family=Ranchers&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <title>CYNERGY</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url("{% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %}");
+      background-repeat: repeat-y;
+      background-size: auto;
+
+      margin: 0;
+      font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+      /* background: #98a5d3; */
+    }
+    blockquote {
+    
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+  }
+
+    .forms-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-title {
+      font-size: 50px;
+      padding-top: 50px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #c6c6db;
+      text-align: center;
+      padding-top: 50px;
+      padding-bottom: 10px;
+    }
+
+    .forms {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+
+    .form-wrapper {
+      animation: hideLayer .3s ease-out forwards;
+    }
+
+    .form-wrapper.is-active {
+      animation: showLayer .3s ease-in forwards;
+    }
+
+    @keyframes showLayer {
+      50% {
+        z-index: 1;
+      }
+
+      100% {
+        z-index: 1;
+      }
+    }
+
+    @keyframes hideLayer {
+      0% {
+        z-index: 1;
+      }
+
+      49.999% {
+        z-index: 1;
+      }
+    }
+
+    .switcher {
+      position: relative;
+      cursor: pointer;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      padding: 0;
+      text-transform: uppercase;
+      font-family: inherit;
+      font-size: 16px;
+      letter-spacing: .5px;
+      color: #999;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      transform: translateX(0);
+      transition: all .3s ease-out;
+    }
+    .carousel-item{
+      height: 250px;
+      background: rgba(0,0,0,.2);
+    border-left: 10px solid #ccc;
+    }
+
+    .form-wrapper.is-active .switcher-login {
+      color: #fff;
+      transform: translateX(170px);
+    }
+
+    .form-wrapper.is-active .switcher-signup {
+      color: #fff;
+      transform: translateX(-170px);
+    }
+
+    .underline {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      overflow: hidden;
+      pointer-events: none;
+      width: 100%;
+      height: 2px;
+    }
+
+    .underline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: inherit;
+      display: block;
+      width: inherit;
+      height: inherit;
+      background-color: currentColor;
+      transition: transform .2s ease-out;
+    }
+
+    .switcher-login .underline::before {
+      transform: translateX(101%);
+    }
+
+    .switcher-signup .underline::before {
+      transform: translateX(-101%);
+    }
+
+    .form-wrapper.is-active .underline::before {
+      transform: translateX(0);
+    }
+
+    .form {
+      overflow: hidden;
+      min-width: 600px;
+      margin-top: 50px;
+      padding: 30px 80px;
+      border-radius: 5px;
+      transform-origin: top;
+    }
+
+    .form-login {
+      animation: hideLogin .3s ease-out forwards;
+    }
+
+    .form-wrapper.is-active .form-login {
+      animation: showLogin .3s ease-in forwards;
+    }
+
+    @keyframes showLogin {
+      0% {
+        background: #d7e7f1;
+        transform: translate(40%, 10px);
+      }
+
+      50% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        background-color: #fff;
+        transform: translate(35%, -20px);
+      }
+    }
+
+    @keyframes hideLogin {
+      0% {
+        background-color: #fff;
+        transform: translate(35%, -20px);
+      }
+
+      50% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        background: #d7e7f1;
+        transform: translate(40%, 10px);
+      }
+    }
+
+    .form-signup {
+      animation: hideSignup .3s ease-out forwards;
+    }
+
+    .form-wrapper.is-active .form-signup {
+      animation: showSignup .3s ease-in forwards;
+    }
+
+    @keyframes showSignup {
+      0% {
+        background: #d7e7f1;
+        transform: translate(-40%, 10px) scaleY(.8);
+      }
+
+      50% {
+        transform: translate(0, 0) scaleY(.8);
+      }
+
+      100% {
+        background-color: #fff;
+        transform: translate(-35%, -20px) scaleY(1);
+      }
+    }
+
+    @keyframes hideSignup {
+      0% {
+        background-color: #fff;
+        transform: translate(-35%, -20px) scaleY(1);
+      }
+
+      50% {
+        transform: translate(0, 0) scaleY(.8);
+      }
+
+      100% {
+        background: #d7e7f1;
+        transform: translate(-40%, 10px) scaleY(.8);
+      }
+    }
+
+    .form fieldset {
+      position: relative;
+      opacity: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      transition: all .3s ease-out;
+    }
+
+    .form-login fieldset {
+      transform: translateX(-50%);
+    }
+
+    .form-signup fieldset {
+      transform: translateX(50%);
+    }
+
+    .form-wrapper.is-active fieldset {
+      opacity: 1;
+      transform: translateX(0);
+      transition: opacity .4s ease-in, transform .35s ease-in;
+    }
+
+    .form legend {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      clip: rect(0 0 0 0);
+    }
+
+    .input-block {
+      margin-bottom: 20px;
+    }
+
+    .input-block label {
+      font-size: 14px;
+      color: #a1b4b4;
+    }
+
+    .input-block input {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 16px;
+      line-height: 40px;
+      color: #677abe;
+      background: #eef9fe;
+      border: 1px solid #cddbef;
+      border-radius: 2px;
+    }
+
+    .form [type='submit'] {
+      opacity: 0;
+      display: block;
+      min-width: 120px;
+      margin: 30px auto 10px;
+      font-size: 18px;
+      line-height: 40px;
+      border-radius: 25px;
+      border: none;
+      transition: all .3s ease-out;
+    }
+
+    .form-wrapper.is-active .form [type='submit'] {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all .4s ease-in;
+    }
+
+    /* .btn-login {
+      color: #fbfdff;
+      background: #a7e245;
+      transform: translateX(-30%);
+    }
+
+    .btn-signup {
+      color: #a7e245;
+      background: #fbfdff;
+      box-shadow: inset 0 0 0 2px #a7e245;
+      transform: translateX(30%);
+    } */
+    .btn-login {
+    background: #9bbcdd;
+    box-shadow: none;
+    border: none
+}
+
+.btn-login:hover {
+    background: #4f8bb9;
+}
+
+.btn-signup:focus {
+    background: #9bbcdd;
+    box-shadow: none
+}
+
+.btn-signup:active {
+    background: #4f8bb9;
+    box-shadow: none
+}
+  </style>
+</head>
+
+<body>
+  {% load static %}
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="z-index: 10;">
+    <div class="container">
+      <a class="navbar-brand" href="#">Welcome</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              LOGIN
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/customer/login">I am Customer</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Donate Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'nav.js' %}"></script>
+
+  <!-- Image and text and navigation bar here  -->
+
+  <!-- <p>here comes our body</p> -->
+  <br><br><br><br><br><br><br><br>
+  <div class="container">
+    <div class="row carausel-1">
+      <div class="col-sm-12">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <figure class="text-center">
+                <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
+                  <p>"People will forget what you said. <br> They will forget what you did. <br> But they will never forget <br> how you made them feel."</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Maya Angelou </cite>
+                </figcaption>
+              </figure>
+              
+            </div>
+            <div class="carousel-item">
+              <figure class="text-center">
+                <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
+                  <p>Customer service <br> is the experience we deliver to our customer. <br> It’s the promise <br> we keep to the customer.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Shep Hyken, Customer Service & Experience Expert, Hyken</cite>
+                </figcaption>
+              </figure>
+             
+            </div>
+            <div class="carousel-item">
+              <figure class="text-center">
+                <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
+                  <p>Client service <br> is about excellence and integrity <br> above all else and it should be <br> a continually evolving process.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Kirk Paulsen, President, River Oak Partners</cite>
+                </figcaption>
+              </figure>
+              
+            </div>
+            <div class="carousel-item">
+              <figure class="text-center">
+                <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
+                  <p>Service, in short, <br> is not what you do, but who you are. <br> It is a way of living <br> that you need to bring to everything you do.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Betsy Sanders, Director, Consultant, Mentor & Writer</cite>
+                </figcaption>
+              </figure>
+              
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <section class="forms-section">
+          <h1 class="section-title">Create a new account</h1>
+          <h4 class="center" style="color: #c6c6db; font-weight: 100; margin-top: 10px;">See how easy we have made it for you.</h4>
+          <div class="forms">
+            <div class="form-wrapper is-active">
+              <button type="button" class="switcher switcher-login">
+                Customer
+                <span class="underline"></span>
+              </button>
+              <form class="form form-login" method="POST" action="/customer/otp">{% csrf_token %}
+                <fieldset>
+                  <legend>Please, enter your email and password for login.</legend>
+                  <div class="input-block">
+                    <label for="inputname">User Name</label>
+                    <input id="inputname" name="user_name" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="login-email">E-mail</label>
+                    <input id="login-email" name="e_mail" type="email" required placeholder="abc@example.com">
+                  </div>
+                  <div class="input-block">
+                    <label for="login-password">Password</label>
+                    <input id="login-password" name="password" type="password" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_phone">Phone no</label>
+                    <input id="input_phone" name="phone_no" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_address">Address</label>
+                    <input id="input_address" name="address" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_city">City</label>
+                    <input id="input_city" name="city" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_state">State</label>
+                    <input id="input_state" name="state" type="text" required>
+                  </div>
+                </fieldset>
+                <button type="submit" class="btn-login">SIGN UP</button>
+              </form>
+            </div>
+            <div class="form-wrapper">
+              <button type="button" class="switcher switcher-signup">
+                Serviceman
+                <span class="underline"></span>
+              </button>
+              <form class="form form-signup" method="POST" action="/serviceman/otp">{% csrf_token %}
+                <fieldset>
+                  <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                  <div class="input-block">
+                    <label for="inputname">User Name</label>
+                    <input id="inputname" name="user_name" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="login-email">E-mail</label>
+                    <input id="login-email" name="e_mail" type="email" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="primary_work">Primary Work</label>
+                    <select class="form-select" aria-label="Default select example" name="primary_work">
+                      <option selected>...</option>
+                      <option value="Carpenter">Carpenter</option>
+                      <option value="Electracian">Electracian</option>
+                      <option value="Plumber">Plumber</option>
+                      <option value="Cleaning">Cleaning</option>
+                      <option value="Kitchen">Kitchen</option>
+                      <option value="Technecian">Technecian</option>
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <label for="secondary_work">secondary_work</label>
+                    <select class="form-select" aria-label="Default select example" name="Secondary_work">
+                      <option selected>...</option>
+                      <option value="Carpenter">Carpenter</option>
+                      <option value="Electracian">Electracian</option>
+                      <option value="Plumber">Plumber</option>
+                      <option value="Cleaning">Cleaning</option>
+                      <option value="Kitchen">Kitchen</option>
+                      <option value="Technecian">Technecian</option>
+                      <option value="Null">None</option>
+                    </select>
+                  </div>
+                  <div class="input-block">
+                    <label for="login-password">Password</label>
+                    <input id="login-password" name="password" type="password" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_phone">Phone no</label>
+                    <input id="input_phone" name="phone_no" type="number" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_address">Address</label>
+                    <input id="input_address" name="address" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_city">City</label>
+                    <input id="input_city" name="city" type="text" required>
+                  </div>
+                  <div class="input-block">
+                    <label for="input_state">State</label>
+                    <input id="input_state" name="state" type="text" required>
+                  </div>
+
+
+                </fieldset>
+                <button type="submit" class="btn-signup">Continue</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <script>
+          const switchers = [...document.querySelectorAll('.switcher')]
+
+          switchers.forEach(item => {
+            item.addEventListener('click', function () {
+              switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+              this.parentElement.classList.add('is-active')
+            })
+          })
+
+        </script>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+  <!-- footer -->
+  <footer class="footer">
+    <div class="social">
+      <a href="#" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
+          alt=""></a>
+      <a href="#" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
+          alt=""></a>
+      <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}"></a>
+      <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
+          alt=""></a>
+
+    </div>
+    <div id="copy">
+      <p class="copy">Copyright © CYNERGY 2021</p>
+    </div>
+  </footer>
+
+
+
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
