@@ -171,11 +171,25 @@
 
     .form {
       overflow: hidden;
-      min-width: 600px;
+      width: 600px;
       margin-top: 50px;
       padding: 30px 80px;
       border-radius: 5px;
       transform-origin: top;
+    }
+    @media only screen and (max-width: 800px) {
+      .form{
+        width: 500px;
+        padding: 10px 80px;
+      }
+
+    }
+    @media only screen and (max-width: 500px) {
+      .form{
+        width: 400px;
+        padding: 10px 80px;
+      }
+
     }
 
     .form-login {
@@ -352,12 +366,12 @@
     background: #4f8bb9;
 }
 
-.btn-signup:focus {
+.btn-signup {
     background: #9bbcdd;
     box-shadow: none
 }
 
-.btn-signup:active {
+.btn-signup:hover {
     background: #4f8bb9;
     box-shadow: none
 }
@@ -539,7 +553,7 @@
                   </div>
                   <div class="input-block">
                     <label for="login-email">E-mail</label>
-                    <input id="login-email" name="e_mail" type="email" required>
+                    <input id="login-email" name="e_mail" type="email" required placeholder="abc@example.com">
                   </div>
                   <div class="input-block">
                     <label for="primary_work">Primary Work</label>
