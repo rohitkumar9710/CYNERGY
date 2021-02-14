@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select your service</title>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'about_us.css' %}">
+    <link href="{% static 'nav.css' %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <style>
+    .main-black{
+    width: 100%;
+    height: auto;
+    /* margin-top: 100px; */
+    /* background-color: black; */
+    background-image: url({% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %});
+    /* background-repeat: no-repeat; */
+    background-position: center ;
+    display: table;
+    padding-bottom: 200px;
+
+    }
+    </style>
+
+
+</head>
+
+<body>
+    {% load static %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/templates/login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donate Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'nav.js' %}"></script>
+        <main>
+            <section class="main-black">
+                <div class="main-header">
+                    <h1 class="main-title">About us</h1>
+                    <figure class="text-center">
+                        <blockquote class="blockquote" style="color: #fff;">
+                          <p>Here,<br>You serve yourself. <br>The first independent platform<br>whcih connects the customer to the servicemen <br> directly.</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                           <cite title="Source Title" style="color: #fff; opacity: 70%;">Team CYNERGY</cite>
+                        </figcaption>
+                      </figure>
+                </div>
+                
+            </section>
+            
+        <div class="main-content">
+            <section class="main-white">
+                <h4 class="main-subtitle-1">What It Is</h4>
+                <div class="main-container-1">
+                    <article class="box1">
+                        <div class="main-row">
+                            <div class="main-col-1">
+                                <p>The very thought of creating this platform was motivated by the needs of daily-wage workers which couldn't meet their expectations past few years where digitalisation domainated the market.</p>
+                                <p>The other side of the wall includes people who recieve these services. Even the customers stayed unquenched this pandemic year, with their woods gone torn, pipes gone cracked, thier kitchen gone untidy and what not just because of that fear of keeping feet outside their comfort zone. </p>
+                                <p>We observed people distancing, both physically and mentally. And the very need of online summoning of the workers got vanished with increasing professionalisation. Trained and qualified servicemen had demands not affordable by these people. </p>
+                            </div>
+                            <div class="main-col-2">
+                                <p>We provide to the customers the service and servicemen both of their choice. They have the freedom to listen to what they want. They have both the choices, either to believe on our instints or to choose on their own. </p>
+                                <p>The service is open 24x7. Have yor service delivered at your doorsteps. Be it cleaning the kitchen appliances or furniture repairs, getting the right person ensures that the job gets done in a satisfactory way. The service people enrolled here are independent and master of their own minds. They can opt for a job or deny it on their will. We are here to get your parallel lines intersect.  </p>
+                                <p>Wishing the people living in either side of the wall, a great journey with us. Bon Voyage!</p>
+                            </div>
+                        </div>
+                       
+                    </article>
+                </div>
+                <h4 class="main-subtitle-2">How It Works</h4>
+                <div class="main-container-2">
+                    <article class="box2">
+                        <div class="main-row">
+                            <div class="para1">
+                                <p>The job was complictaed until we made it easy. The customers enroll as service recievers and opt for the job they want to get done. They will have options to choose, either a custom search or a random one. Custome search offers the customers to find the serviceman of their choice on the basis of their experience, feedbacks and field of expertise. They send a request after this. </p>
+                                <p>The random search option gives us the job to assign the right person to the right place. The customer's job gets finished here. Now the people enrolling as the service providers, present themselves either available or occupied. Availability pushes them to the customers desk for being chosen. Occupied makes them inert for that while.</p>
+                                <p>The serviceman gets the notification of being requested at a place and he may chose or not to accept. The serviceman accepting may contact the customer on their side. They will have access to customer's phone number for their perusal.</p>
+                            </div>
+                        </div>
+                        
+
+                    </article>
+                    
+                </div>
+            </section>
+        </div>
+        
+        </main>
+        <!-- OUR TEAM -->
+        <section class="team section">
+            <div class="container-x">
+                <h1 class="section-title">Our Team</h1>
+                <hr style="width: 50%; margin-left: 25%; margin-right: 25%;">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="team-item">
+                            <figure>
+                                <img src="{% static 'pics/img-about-us/Download-the-Google-Pixel-4as-new-Eclipse-Are-living-Wallpaper cropped.jpg' %}" alt="">
+                                <figcaption>
+                                    <div class="info">
+                                        <h3>Prajyot Ramteke</h3>
+                                        <p>ramtekeprajyot@gmail.com</p>
+                                    </div>
+                                    <div class="social">
+                                        <a href="#"><img src="{% static 'pics/img-about-us/icons8-github-90.png' %}" alt=""></a>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=ramtekeprajyot@email.com" class="mail">
+                                        <img src="{% static 'pics/img-about-us/icons8-gmail-48.png' %}" alt=""></a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="team-item">
+                            <figure>
+                                <img src="{% static 'pics/img-about-us/Download-the-Google-Pixel-4as-new-Eclipse-Are-living-Wallpaper cropped.jpg' %}" alt="">
+                                <figcaption>
+                                    <div class="info">
+                                        <h3>Rupak Biswas</h3>
+                                        <p>rupakbiswas2304@gmail.com</p>
+                                    </div>
+                                    <div class="social">
+                                        <a href="#"><img src="{% static 'pics/img-about-us/icons8-github-90.png' %}" alt=""></a>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=ramtekeprajyot@email.com" class="mail">
+                                        <img src="{% static 'pics/img-about-us/icons8-gmail-48.png' %}" alt=""></a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="team-item">
+                            <figure>
+                                <img src="{% static 'pics/img-about-us/Download-the-Google-Pixel-4as-new-Eclipse-Are-living-Wallpaper cropped.jpg' %}" alt="">
+                                <figcaption>
+                                    <div class="info">
+                                        <h3>Rohit Kumar</h3>
+                                        <p>rohitmishra051000@gmail.com</p>
+                                    </div>
+                                    <div class="social">
+                                        <a href="#"><img src="{% static 'pics/img-about-us/icons8-github-90.png' %}" alt=""></a>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=ramtekeprajyot@email.com" class="mail">
+                                        <img src="{% static 'pics/img-about-us/icons8-gmail-48.png' %}" alt=""></a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="team-item">
+                            <figure>
+                                <img src="{% static 'pics/img-about-us/Download-the-Google-Pixel-4as-new-Eclipse-Are-living-Wallpaper cropped.jpg' %}" alt="">
+                                <figcaption>
+                                    <div class="info">
+                                        <h3>Shivam Singhal</h3>
+                                        <p>shivam.singhal18012002@gmail.com</p>
+                                    </div>
+                                    <div class="social">
+                                        <a href="#"><img src="{% static 'pics/img-about-us/icons8-github-90.png' %}" alt=""></a>
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=ramtekeprajyot@email.com" class="mail">
+                                        <img src="{% static 'pics/img-about-us/icons8-gmail-48.png' %}" alt=""></a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <!-- footer -->
+    <footer class="footer">
+        <div class="social">
+            <a href="#" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
+                    alt=""></a>
+            <a href="#" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
+                    alt=""></a>
+            <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" ></a>
+            <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
+                    alt=""></a>
+
+        </div>
+        <div id="copy">
+            <p class="copy">Copyright © CYNERGY 2021</p>
+        </div>
+    </footer>
+        
+    </body>
+</html>

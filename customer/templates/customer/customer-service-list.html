@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select your service</title>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'customer-service-list.css' %}">
+    <link href="{% static 'nav.css' %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <style>
+        body{
+        background-image: url("{% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %}");
+        height: auto;
+        background-repeat: repeat-y;
+        }
+        
+
+        .services-list #ck1 + label {
+        display: block;	
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 50px;
+        cursor: pointer;	
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-drill-96.png' %}");
+        background-repeat: no-repeat;
+        }
+    .services-list #ck1[type="checkbox"]:checked + label {
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-drill-96 checked.png' %}")
+        }
+    .services-list #ck2 + label {
+        display: block;	
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 50px;
+        cursor: pointer;	
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-screwdriver-96.png' %}");
+        background-repeat: no-repeat;
+    }
+    .services-list #ck2[type="checkbox"]:checked + label {
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-screwdriver-96 checked.png' %}")
+    }
+    .services-list #ck3 + label {
+        display: block;	
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 50px;
+        cursor: pointer;	
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-water-pipe-96.png' %}");
+        background-repeat: no-repeat;
+    }
+    .services-list #ck3[type="checkbox"]:checked + label {
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-water-pipe-96 checked.png' %}")
+    }
+    .services-list #ck4 + label {
+        display: block;	
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 50px;
+        cursor: pointer;	
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-teapot-96.png' %}");
+        background-repeat: no-repeat;
+    }
+    .services-list #ck4[type="checkbox"]:checked + label {
+        background-image: url({% static 'pics/img-customer-service-list/icons8-teapot-96 checked.png' %})
+    }
+    .services-list #ck5 + label {
+        display: block;	
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 50px;
+        cursor: pointer;	
+        background-image: url("{% static 'pics/img-customer-service-list/icons8-broom-96.png' %}");
+        background-repeat: no-repeat;
+    }
+    .services-list #ck5[type="checkbox"]:checked + label {
+        background-image: url({% static 'pics/img-customer-service-list/icons8-broom-96 checked.png' %})
+    }
+    .services-list #ck6 + label {
+        display: block;	
+        width: 200px;
+        height: 200px;
+        margin-top: 30px;
+        margin-left: 50px;
+        cursor: pointer;	
+        background-image: url({% static 'pics/img-customer-service-list/icons8-engineering-96.png' %});
+        background-repeat: no-repeat;
+    }
+    .services-list #ck6[type="checkbox"]:checked + label {
+        background-image: url({% static 'pics/img-customer-service-list/icons8-engineering-96 checked.png' %})
+    }
+
+    </style>
+
+
+</head>
+
+<body>
+    {% load static %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/profile_customer/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">History</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donate Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'nav.js' %}"></script>
+
+    <!-- body -->
+    <form>
+        <main class="main-main">
+            <div class="main-index">
+                <h1>Our Services</h1>
+            </div>
+            <div class="services-list">
+                <div class="col-1-1">
+                    <div class="image-checkbox">
+                        <input type="checkbox" id="ck1" class="service-list">
+                        <label class="label" for="ck1">
+                        </label>
+                        <div class="name">
+                            <p>Carpenter</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-2">
+                    <div class="image-checkbox">
+                        <input type="checkbox" id="ck2" class="service-list">
+                        <label class="label" for="ck2">
+                        </label>
+                        <div class="name">
+                            <p>Electrician</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-3">
+                    <div class="image-checkbox">
+                        <input type="checkbox" id="ck3" class="service-list">
+                        <label class="label" for="ck3">
+                        </label>
+                        <div class="name">
+                            <p>Plumber</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2-1">
+                    <div class="image-checkbox">
+                        <input type="checkbox" id="ck4" class="service-list">
+                        <label class="label" for="ck4">
+                        </label>
+                        <div class="name">
+                            <p>Kitchen</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2-2">
+                    <div class="image-checkbox">
+                        <input type="checkbox" id="ck5" class="service-list">
+                        <label class="label" for="ck5">
+                        </label>
+                        <div class="name">
+                            <p>Cleaning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2-3">
+                    <div class="image-checkbox">
+                        <input type="checkbox" id="ck6" class="service-list">
+                        <label class="label" for="ck6">
+                        </label>
+                        <div class="name">
+                            <p>Technician</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- to make checkboxes click one at a time -->
+
+            <script type="text/javascript">
+                $('.service-list').on('change', function () {
+                    $('.service-list').not(this).prop('checked', false);
+                });
+            </script>
+
+
+            <div class="wrapper">
+                <button>
+                    Custom Search!
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button>
+                    Random Search!
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+
+
+        </main>
+
+    </form>
+
+    <figure class="text-center" style="margin-top: 100px;">
+        <blockquote class="blockquote" style="color: #fff;">
+            <p>A life not lived for <br>others is not a life lived..</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            <cite title="Source Title" style="color: #fff; opacity: 70%;">Mother Teresa</cite>
+        </figcaption>
+    </figure>
+    <div class="container-fluid overflow-hidden" id="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <img class="col-5" src="{% static '/pics/img-customer-service-list/paul-trienekens-mLO6ILUbADA-unsplash.jpg' %}"
+                alt="Carpenter">
+            <div class="col-5">
+                <h1 class=""> Carpenter</h1>
+                <p class="em">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <img class="col-5"
+                src="{% static 'pics/img-customer-service-list/depositphotos_53556757-stock-photo-electrician-work.jpg' %}"
+                alt="Electrician">
+            <div class="col-5">
+                <h1 class=""> Electrician</h1>
+                <p class="em">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <img class="col-5"
+                src="{% static 'pics/img-customer-service-list/hands-plumber-work-bathroom-plumbing-repair-service-leak-water-repair-plumbing_106035-63.jpg' %}"
+                alt="Plumber">
+            <div class="col-5">
+                <h1 class=""> Plumber</h1>
+                <p class="em">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <img class="col-5" src="{% static 'pics/img-customer-service-list/house_cleaner_x2.jpg' %}" alt="Cleaner">
+            <div class="col-5">
+                <h1 class=""> Cleaner</h1>
+                <p class="em">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <img class="col-5" src="{% static 'pics/img-customer-service-list/suvidha-68100kitchen-deep.jpg' %}"
+                alt="Kitchen">
+            <div class="col-5">
+                <h1 class="">Kitchen</h1>
+                <p class="em">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <img class="col-5" src="{% static 'pics/img-customer-service-list/nj-computer-technician.jpg' %}"
+                alt="Technician">
+            <div class="col-5">
+                <h1 class="">Technician</h1>
+                <p class="em">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
+                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
+                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="social">
+            <a href="#" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
+                    alt=""></a>
+            <a href="#" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
+                    alt=""></a>
+            <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" alt=""></a>
+            <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
+                    alt=""></a>
+
+        </div>
+        <div id="copy">
+            <p class="copy">Copyright © CYNERGY 2021</p>
+        </div>
+    </footer>
+
+
+
+
+</body>
+
+</html>

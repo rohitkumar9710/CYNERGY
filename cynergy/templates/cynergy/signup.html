@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <title>CYNERGY</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+        background: #98a5d3;
+    }
+
+    .forms-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 32px;
+        letter-spacing: 1px;
+        color: #fff;
+    }
+
+    .forms {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 30px;
+    }
+
+    .form-wrapper {
+        animation: hideLayer .3s ease-out forwards;
+    }
+
+    .form-wrapper.is-active {
+        animation: showLayer .3s ease-in forwards;
+    }
+
+    @keyframes showLayer {
+        50% {
+            z-index: 1;
+        }
+
+        100% {
+            z-index: 1;
+        }
+    }
+
+    @keyframes hideLayer {
+        0% {
+            z-index: 1;
+        }
+
+        49.999% {
+            z-index: 1;
+        }
+    }
+
+    .switcher {
+        position: relative;
+        cursor: pointer;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0;
+        text-transform: uppercase;
+        font-family: inherit;
+        font-size: 16px;
+        letter-spacing: .5px;
+        color: #999;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        transform: translateX(0);
+        transition: all .3s ease-out;
+    }
+
+    .form-wrapper.is-active .switcher-login {
+        color: #fff;
+        transform: translateX(90px);
+    }
+
+    .form-wrapper.is-active .switcher-signup {
+        color: #fff;
+        transform: translateX(-90px);
+    }
+
+    .underline {
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
+        width: 100%;
+        height: 2px;
+    }
+
+    .underline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: inherit;
+        display: block;
+        width: inherit;
+        height: inherit;
+        background-color: currentColor;
+        transition: transform .2s ease-out;
+    }
+
+    .switcher-login .underline::before {
+        transform: translateX(101%);
+    }
+
+    .switcher-signup .underline::before {
+        transform: translateX(-101%);
+    }
+
+    .form-wrapper.is-active .underline::before {
+        transform: translateX(0);
+    }
+
+    .form {
+        overflow: hidden;
+        min-width: 260px;
+        margin-top: 50px;
+        padding: 30px 25px;
+        border-radius: 5px;
+        transform-origin: top;
+    }
+
+    .form-login {
+        animation: hideLogin .3s ease-out forwards;
+    }
+
+    .form-wrapper.is-active .form-login {
+        animation: showLogin .3s ease-in forwards;
+    }
+
+    @keyframes showLogin {
+        0% {
+            background: #d7e7f1;
+            transform: translate(40%, 10px);
+        }
+
+        50% {
+            transform: translate(0, 0);
+        }
+
+        100% {
+            background-color: #fff;
+            transform: translate(35%, -20px);
+        }
+    }
+
+    @keyframes hideLogin {
+        0% {
+            background-color: #fff;
+            transform: translate(35%, -20px);
+        }
+
+        50% {
+            transform: translate(0, 0);
+        }
+
+        100% {
+            background: #d7e7f1;
+            transform: translate(40%, 10px);
+        }
+    }
+
+    .form-signup {
+        animation: hideSignup .3s ease-out forwards;
+    }
+
+    .form-wrapper.is-active .form-signup {
+        animation: showSignup .3s ease-in forwards;
+    }
+
+    @keyframes showSignup {
+        0% {
+            background: #d7e7f1;
+            transform: translate(-40%, 10px) scaleY(.8);
+        }
+
+        50% {
+            transform: translate(0, 0) scaleY(.8);
+        }
+
+        100% {
+            background-color: #fff;
+            transform: translate(-35%, -20px) scaleY(1);
+        }
+    }
+
+    @keyframes hideSignup {
+        0% {
+            background-color: #fff;
+            transform: translate(-35%, -20px) scaleY(1);
+        }
+
+        50% {
+            transform: translate(0, 0) scaleY(.8);
+        }
+
+        100% {
+            background: #d7e7f1;
+            transform: translate(-40%, 10px) scaleY(.8);
+        }
+    }
+
+    .form fieldset {
+        position: relative;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: all .3s ease-out;
+    }
+
+    .form-login fieldset {
+        transform: translateX(-50%);
+    }
+
+    .form-signup fieldset {
+        transform: translateX(50%);
+    }
+
+    .form-wrapper.is-active fieldset {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity .4s ease-in, transform .35s ease-in;
+    }
+
+    .form legend {
+        position: absolute;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        clip: rect(0 0 0 0);
+    }
+
+    .input-block {
+        margin-bottom: 20px;
+    }
+
+    .input-block label {
+        font-size: 14px;
+        color: #a1b4b4;
+    }
+
+    .input-block input {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 16px;
+        line-height: 40px;
+        color: #677abe;
+        background: #eef9fe;
+        border: 1px solid #cddbef;
+        border-radius: 2px;
+    }
+
+    .form [type='submit'] {
+        opacity: 0;
+        display: block;
+        min-width: 120px;
+        margin: 30px auto 10px;
+        font-size: 18px;
+        line-height: 40px;
+        border-radius: 25px;
+        border: none;
+        transition: all .3s ease-out;
+    }
+
+    .form-wrapper.is-active .form [type='submit'] {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all .4s ease-in;
+    }
+
+    .btn-login {
+        color: #fbfdff;
+        background: #a7e245;
+        transform: translateX(-30%);
+    }
+
+    .btn-signup {
+        color: #a7e245;
+        background: #fbfdff;
+        box-shadow: inset 0 0 0 2px #a7e245;
+        transform: translateX(30%);
+    }
+</style>
+</head>
+
+<body>
+  <!-- Image and text and navigation bar here  -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top " style="background-color: #3016a32c;">
+    <div class="container-fluid">
+      <!-- <p>logo comes here</p> -->
+      <a class="navbar-brand" href="#">
+        <img src="" alt="" width="30" height="24" class="d-inline-block align-top">
+        CYNERGY
+      </a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        style="border: solid;border-radius:25px; border-color: #a773e233;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">WELCOME</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  LOGIN
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/customer/login">I am Customer</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">SIGN UP</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">CONTACT US </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">DONATE US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled " href="#" tabindex="-1" aria-disabled="true">Tutorial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </nav>
+  <!-- <p>here comes our body</p> -->
+  <br><br><br><br><br><br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="https://images.unsplash.com/photo-1613066839036-f975502cafba?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1542117991-205f1f56bd14?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img
+                src="https://images.unsplash.com/photo-1507843528572-dce34aa57530?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1030&q=80"
+                class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <!-- <p>here is our forms</p> -->
+      </div>
+      <div class="col-sm-5">
+        <section class="forms-section">
+            <h1 class="section-title">SIGN UP</h1>
+            <div class="forms">
+                <div class="form-wrapper is-active">
+                    <button type="button" class="switcher switcher-login">
+                        Customer
+                        <span class="underline"></span>
+                    </button>
+                    <form class="form form-login"  method="POST" action="/customer/otp">{% csrf_token %}
+                        <fieldset>
+                            <legend>Please, enter your email and password for login.</legend>
+                            <div class="input-block">
+                                <label for="inputname">User Name</label>
+                                <input id="inputname" name="user_name" type="text" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="login-email">E-mail</label>
+                                <input id="login-email" name="e_mail" type="email" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="login-password">Password</label>
+                                <input id="login-password" name="password" type="password" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_phone">Phone no</label>
+                                <input id="input_phone" name="phone_no"  type="number" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_address">Address</label>
+                                <input id="input_address" name="address"  type="text" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_city">City</label>
+                                <input id="input_city" name="city"  type="text" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_state">State</label>
+                                <input id="input_state" name="state"  type="text" required>
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btn-login">SIGN UP</button>
+                    </form>
+                </div>
+                <div class="form-wrapper">
+                    <button type="button" class="switcher switcher-signup">
+                        Serviceman
+                        <span class="underline"></span>
+                    </button>
+                    <form class="form form-signup" method="POST" action="/serviceman/otp">{% csrf_token %}
+                        <fieldset>
+                            <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                            <div class="input-block">
+                                <label for="inputname">User Name</label>
+                                <input id="inputname" name="user_name" type="text" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="login-email">E-mail</label>
+                                <input id="login-email" name="e_mail" type="email" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="primary_work">Primary Work</label>
+                                <select class="form-select" aria-label="Default select example" name = "primary_work">
+                                    <option selected>...</option>
+                                    <option value="Carpenter">Carpenter</option>
+                                    <option value="Electracian">Electracian</option>
+                                    <option value="Plumber">Plumber</option>
+                                    <option value="Cleaning">Cleaning</option>
+                                    <option value="Kitchen">Kitchen</option>
+                                    <option value="Technecian">Technecian</option>
+                                </select>
+                            </div>
+                            <div class="input-block">
+                                <label for="secondary_work">secondary_work</label>
+                                <select class="form-select" aria-label="Default select example" name = "Secondary_work">
+                                    <option selected>...</option>
+                                    <option value="Carpenter">Carpenter</option>
+                                    <option value="Electracian">Electracian</option>
+                                    <option value="Plumber">Plumber</option>
+                                    <option value="Cleaning">Cleaning</option>
+                                    <option value="Kitchen">Kitchen</option>
+                                    <option value="Technecian">Technecian</option>
+                                    <option value="Null">None</option>
+                                </select>
+                            </div>
+                            <div class="input-block">
+                                <label for="login-password">Password</label>
+                                <input id="login-password" name="password" type="password" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_phone">Phone no</label>
+                                <input id="input_phone" name="phone_no" type="number"  required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_address">Address</label>
+                                <input id="input_address" name="address"  type="text" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_city">City</label>
+                                <input id="input_city" name="city"  type="text" required>
+                            </div>
+                            <div class="input-block">
+                                <label for="input_state">State</label>
+                                <input id="input_state" name="state"  type="text" required>
+                            </div>
+
+
+                        </fieldset>
+                        <button type="submit" class="btn-signup">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    
+        <script>
+            const switchers = [...document.querySelectorAll('.switcher')]
+    
+            switchers.forEach(item => {
+                item.addEventListener('click', function () {
+                    switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                    this.parentElement.classList.add('is-active')
+                })
+            })
+    
+        </script>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+  <!-- Footer -->
+  <footer class="bg-light text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Footer Content</h5>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+            voluptatem veniam, est atque cumque eum delectus sint!
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-dark">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-dark">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-dark">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2020 Copyright:
+      <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
