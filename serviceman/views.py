@@ -128,3 +128,33 @@ def servicelist_update(request):
     B.save()
     return HttpResponse("<script>window.location = '/serviceman/login/loggedin/services'</script>")
 
+def profile(request):
+    B = Serviceinfo.objects.get(email = K[0])
+    data = {"name":B.name,"gender":B.gender,"date":B.sign_up_date,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state}
+    return render(request,'serviceman/service-profile.html',data)
+
+def profile_update(request):
+    name2 = request.POST.get('name1')
+    email2 = request.POST.get('email1')
+    password2 = request.POST.get('password1')
+    phone2 = request.POST.get('phoneno1')
+    address2 = request.POST.get('address1')
+    city2 = request.POST.get('city1')
+    state2 = request.POST.get('state1')
+    gender2 = request.POST.get('gender1')
+    primaryjob2 = request.POST.get('primaryjob')
+    secondaryjob2 = request.POST.get('secondaryjob')
+
+    B = Serviceinfo.objects.get(email = K[0])
+    B.name = name2
+    B.email = email2
+    B.phone_no = phone2
+    B.password = password2
+    B.addres = address2
+    B.city = city2
+    B.state = state2
+    B.gender = gender2
+    B.primary_work = primaryjob2
+    B.secondary_work = secondaryjob2
+    B.save()
+    return HttpResponse("<script>window.location = '/serviceman/login/loggedin/profile'</script>")

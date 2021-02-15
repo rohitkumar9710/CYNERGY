@@ -12,5 +12,7 @@ urlpatterns = [
     path("login/loggedin/aboutus",views.aboutus,name = "aboutus"),
     path("login/loggedin/logout",views.logout,name = "logout"),
     path("login/loggedin/contactus",views.contactus,name = "contactus"),
+    path("login/loggedin/profile",views.profile,name = "profile"),
+    path("login/loggedin/profile/update",views.profile_update,name = "profile_update"),
     path("login/loggedin/contactus/contact_status",views.contact_submit,name = "contact_submit"),
 ]
