@@ -5,8 +5,8 @@
     <title>Select your service</title>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="../static/css/contact-us.css">
-    <link href="../static/css/nav.css" rel="stylesheet">
+    <link rel="stylesheet" href="/media/cynergy/css/contact-us.css">
+    <link href="/media/cynergy/css/nav.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
         type='text/css'>
@@ -38,23 +38,33 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">History</a>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        LOGIN
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/customer/login">I am Customer</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+                      </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/templates/login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Location</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">Donate Us</a>
                     </li>
@@ -71,6 +81,7 @@
     <script src="../static/js/nav.js"></script>
     <!-- body -->
   
+    
     <div class="container contact">
       <div class="row">
         <div class="col-md-3">
@@ -81,29 +92,30 @@
           </div>
         </div>
         <div class="col-md-9">
+         <form method="POST" action = "contactus/status" >{% csrf_token %}
           <div class="contact-form">
             <div class="form-group">
-              <label class="control-label col-sm-2" for="fname">First Name:</label>
+              <label class="control-label col-sm-2" for="fname"> Name:</label>
               <div class="col-sm-10">          
-              <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="lname">Last Name:</label>
-              <div class="col-sm-10">          
-              <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname">
+              <input type="text" class="form-control" id="fname" placeholder="Enter  Name" name="name1">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="email">Email:</label>
               <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email1">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="subject">Subject:</label>
+              <div class="col-sm-10">          
+              <input type="text" class="form-control" id="subject" placeholder="Enter subject" name="subject1">
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-2" for="comment">Comment:</label>
               <div class="col-sm-10">
-              <textarea class="form-control" rows="5" id="comment"></textarea>
+              <textarea class="form-control" rows="5" id="comment" name="comment1"></textarea>
               </div>
             </div>
             <div class="form-group">        
@@ -118,12 +130,12 @@
 <!-- footer     -->
         <footer class="footer">
           <div class="social">
-              <a href="#" class="facebook" title="Facebook"><img src="../Static/pics/img-footer/icons8-facebook-48.png"
+              <a href="#" class="facebook" title="Facebook"><img src="/media/cynergy/pics/img-footer/icons8-facebook-48.png"
                       alt=""></a>
-              <a href="#" class="instagram" title="Instagram"><img src="../Static/pics/img-footer/icons8-instagram-50.png"
+              <a href="#" class="instagram" title="Instagram"><img src="/media/cynergy/pics/img-footer/icons8-instagram-50.png"
                       alt=""></a>
-              <a href="#" class="email" title="Email"><img src="../Static/pics/img-footer/icons8-email-48.png" alt=""></a>
-              <a href="#" class="github" title="Github"><img src="../Static/pics/img-footer/icons8-github-90.png"
+              <a href="#" class="email" title="Email"><img src="/media/cynergy/pics/img-footer/icons8-email-48.png" alt=""></a>
+              <a href="#" class="github" title="Github"><img src="/media/cynergy/pics/img-footer/icons8-github-90.png"
                       alt=""></a>
   
           </div>
