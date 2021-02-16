@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from customer.models import Custinfo
+from customer.models import Custinfo,Custom_order
 from customer.models import Contact
+from serviceman.models import Serviceinfo
 from django.utils import timezone
 # Create your views here.
 
@@ -129,4 +130,67 @@ def contact_submit(request):
     comment2 = request.POST.get('comment1')
     comment = Contact(name = name2, email = email2, subject = subject2, comment = comment2,date = timezone.now())
     comment.save()
+    return HttpResponse("<script>window.location = '/customer/login/loggedin/services'</script>")
+
+
+
+def search(request):
+    B = Custinfo.objects.get(email = K[0])
+    k = B.loginstate
+    if k == "yes":
+
+        B = Custinfo.objects.get(email = K[0])
+        carpenter2 = request.POST.get('carpenter')
+        electrecian2 = request.POST.get('electrecian')
+        plumber2= request.POST.get('plumber')
+        technecian2 = request.POST.get('technecian')
+        cleaning2 = request.POST.get('cleaning')
+        kitchen2 = request.POST.get('kitchen')
+        button12 = request.POST.get('button1')
+        button22 = request.POST.get('button2')
+        lst = [cleaning2,technecian2,plumber2,electrecian2,carpenter2,kitchen2]
+        services = ['cleaning','technecian','plumber','electrecian','carpenter','kitchen']
+        if button12 == "on":
+            print(lst)
+            l = lst.index('on')
+            print(l,services[l])
+            service = services[l]
+            if service == 'cleaning':
+                service_data = Serviceinfo.objects.filter(cleaning='on')
+                print(service_data)
+                return render(request,'customer/custom_search.html',{"data":service_data})
+            elif service == 'technecian':
+                service_data = Serviceinfo.objects.filter(technecian='on')
+                print(service_data)    
+                return render(request,'customer/custom_search.html',{"data":service_data})
+            elif service == 'plumber':
+                service_data = Serviceinfo.objects.filter(plumber='on')
+                print(service_data) 
+                return render(request,'customer/custom_search.html',{"data":service_data})
+            elif service == 'electrecian':
+                service_data = Serviceinfo.objects.filter(electrecian='on')
+                print(service_data) 
+                return render(request,'customer/custom_search.html',{"data":service_data})
+            elif service == 'carpenter':
+                service_data = Serviceinfo.objects.filter(carpenter='on')
+                print(service_data) 
+                return render(request,'customer/custom_search.html',{"data":service_data})
+            elif service == 'kitchen':
+                service_data = Serviceinfo.objects.filter(kitchen='on')
+                print(service_data) 
+                return render(request,'customer/custom_search.html',{"data":service_data})
+            else:
+                return HttpResponse("Entered Wrong information")
+            
+        elif button22 == "on":
+            return HttpResponse("randomsearch page") 
+    else:
+        return HttpResponse("<script>window.location = '/customer/login'</script>")
+
+def search_request(request):
+    B = Custinfo.objects.get(email = K[0])
+    a = request.POST.get('request')
+    work = Custom_order(customer_email=K[0],serviceman_email=a,request_date=timezone.now())
+    work.save()
+    
     return HttpResponse("<script>window.location = '/customer/login/loggedin/services'</script>")

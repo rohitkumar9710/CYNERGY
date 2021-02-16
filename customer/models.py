@@ -30,3 +30,19 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Custom_order(models.Model):
+    customer_email = models.CharField(max_length = 150)
+    serviceman_email = models.CharField( max_length=150)
+    accept_status = models.CharField( max_length=50, default= "None")
+    work_done_status = models.CharField( default= "None", max_length=50)
+    feedback = models.CharField(default = "None", max_length=50)
+    request_date = models.DateField()
+    deadline_date = models.DateField(null=True, blank=True)
+    accept_date = models.DateField(null=True, blank=True)
+    end_date = models.DateField(null=True, blank=True)
+    work_description = models.CharField(default = "None", max_length=50)
+    
+    def __str__(self):
+        return self.customer_email

@@ -158,7 +158,7 @@
     <script src="{% static 'nav.js' %}"></script>
 
     <!-- body -->
-    <form>
+    <form method="POST" action='/customer/login/loggedin/services/search'>  {%csrf_token%}
         <main class="main-main">
             <div class="main-index">
                 <h1>Our Services</h1>
@@ -166,7 +166,7 @@
             <div class="services-list">
                 <div class="col-1-1">
                     <div class="image-checkbox">
-                        <input type="checkbox" id="ck1" class="service-list">
+                        <input type="checkbox" id="ck1" class="service-list" name= "carpenter">
                         <label class="label" for="ck1">
                         </label>
                         <div class="name">
@@ -176,7 +176,7 @@
                 </div>
                 <div class="col-1-2">
                     <div class="image-checkbox">
-                        <input type="checkbox" id="ck2" class="service-list">
+                        <input type="checkbox" id="ck2" class="service-list" name="electrecian">
                         <label class="label" for="ck2">
                         </label>
                         <div class="name">
@@ -186,7 +186,7 @@
                 </div>
                 <div class="col-1-3">
                     <div class="image-checkbox">
-                        <input type="checkbox" id="ck3" class="service-list">
+                        <input type="checkbox" id="ck3" class="service-list" name = "plumber">
                         <label class="label" for="ck3">
                         </label>
                         <div class="name">
@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-2-1">
                     <div class="image-checkbox">
-                        <input type="checkbox" id="ck4" class="service-list">
+                        <input type="checkbox" id="ck4" class="service-list" name = "kitchen">
                         <label class="label" for="ck4">
                         </label>
                         <div class="name">
@@ -206,7 +206,7 @@
                 </div>
                 <div class="col-2-2">
                     <div class="image-checkbox">
-                        <input type="checkbox" id="ck5" class="service-list">
+                        <input type="checkbox" id="ck5" class="service-list" name = "cleaning">
                         <label class="label" for="ck5">
                         </label>
                         <div class="name">
@@ -216,7 +216,7 @@
                 </div>
                 <div class="col-2-3">
                     <div class="image-checkbox">
-                        <input type="checkbox" id="ck6" class="service-list">
+                        <input type="checkbox" id="ck6" class="service-list" name= "technecian">
                         <label class="label" for="ck6">
                         </label>
                         <div class="name">
@@ -236,20 +236,22 @@
 
 
             <div class="wrapper">
-                <button>
+                <button value="on" type = "submit" name="button1">
                     Custom Search!
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-                <button>
+                
+                <button value="on" type = "submit" name="button2">
                     Random Search!
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+                
             </div>
 
 

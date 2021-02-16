@@ -130,7 +130,7 @@ def servicelist_update(request):
 
 def profile(request):
     B = Serviceinfo.objects.get(email = K[0])
-    data = {"name":B.name,"gender":B.gender,"date":B.sign_up_date,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state}
+    data = {"name":B.name,"gender":B.gender,"date":B.sign_up_date,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
     return render(request,'serviceman/service-profile.html',data)
 
 def profile_update(request):
@@ -158,3 +158,4 @@ def profile_update(request):
     B.secondary_work = secondaryjob2
     B.save()
     return HttpResponse("<script>window.location = '/serviceman/login/loggedin/profile'</script>")
+
