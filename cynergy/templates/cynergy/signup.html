@@ -8,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="{% static 'nav.css' %}" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&family=Lexend+Mega&family=Ranchers&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@700&family=Lexend+Mega&family=Ranchers&display=swap"
+    rel="stylesheet">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,24 +33,26 @@
       font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
       /* background: #98a5d3; */
     }
-    blockquote {
-    
-    margin: 1.5em 10px;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
-  }
-  blockquote:before {
-    color: #ccc;
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
-  }
 
-  blockquote p {
-    display: inline;
-  }
+    blockquote {
+
+      margin: 1.5em 10px;
+      padding: 0.5em 10px;
+      quotes: "\201C""\201D""\2018""\2019";
+    }
+
+    blockquote:before {
+      color: #ccc;
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+
+    blockquote p {
+      display: inline;
+    }
 
     .forms-section {
       display: flex;
@@ -119,10 +123,11 @@
       transform: translateX(0);
       transition: all .3s ease-out;
     }
-    .carousel-item{
+
+    .carousel-item {
       height: 250px;
-      background: rgba(0,0,0,.2);
-    border-left: 10px solid #ccc;
+      background: rgba(0, 0, 0, .2);
+      border-left: 10px solid #ccc;
     }
 
     .form-wrapper.is-active .switcher-login {
@@ -177,15 +182,17 @@
       border-radius: 5px;
       transform-origin: top;
     }
+
     @media only screen and (max-width: 800px) {
-      .form{
+      .form {
         width: 500px;
         padding: 10px 80px;
       }
 
     }
+
     @media only screen and (max-width: 500px) {
-      .form{
+      .form {
         width: 400px;
         padding: 10px 80px;
       }
@@ -357,23 +364,86 @@
       transform: translateX(30%);
     } */
     .btn-login {
-    background: #9bbcdd;
-    box-shadow: none;
-    border: none
+      background: #9bbcdd;
+      box-shadow: none;
+      border: none
+    }
+
+    .btn-login:hover {
+      background: #4f8bb9;
+    }
+
+    .btn-signup {
+      background: #9bbcdd;
+      box-shadow: none
+    }
+
+    .btn-signup:hover {
+      background: #4f8bb9;
+      box-shadow: none
+    }
+    /* Style all input fields */
+#login-password1,#login-password2 {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
 }
 
-.btn-login:hover {
-    background: #4f8bb9;
+/* Style the submit button */
+#login-password1[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+}
+#login-password2[type=submit] {
+  background-color: #4CAF50;
+  color: white;
 }
 
-.btn-signup {
-    background: #9bbcdd;
-    box-shadow: none
+/* Style the container for inputs */
+/* .container {
+  background-color: #f1f1f1;
+  padding: 20px;
+} */
+
+/* The message box is shown when the user clicks on the password field */
+#message1,#message2 {
+  display:none;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
 }
 
-.btn-signup:hover {
-    background: #4f8bb9;
-    box-shadow: none
+#message1,#message2 p {
+  margin-top: 10px;
+  padding-left: 45px;
+  font-size: 15px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
 }
   </style>
 </head>
@@ -438,46 +508,53 @@
             <div class="carousel-item active">
               <figure class="text-center">
                 <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
-                  <p>"People will forget what you said. <br> They will forget what you did. <br> But they will never forget <br> how you made them feel."</p>
+                  <p>"People will forget what you said. <br> They will forget what you did. <br> But they will never
+                    forget <br> how you made them feel."</p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Maya Angelou </cite>
+                  <cite title="Source Title" style="color: #fff; opacity: 70%;">Maya Angelou </cite>
                 </figcaption>
               </figure>
-              
+
             </div>
             <div class="carousel-item">
               <figure class="text-center">
                 <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
-                  <p>Customer service <br> is the experience we deliver to our customer. <br> It’s the promise <br> we keep to the customer.</p>
+                  <p>Customer service <br> is the experience we deliver to our customer. <br> It’s the promise <br> we
+                    keep to the customer.</p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Shep Hyken, Customer Service & Experience Expert, Hyken</cite>
+                  <cite title="Source Title" style="color: #fff; opacity: 70%;">Shep Hyken, Customer Service &
+                    Experience Expert, Hyken</cite>
                 </figcaption>
               </figure>
-             
+
             </div>
             <div class="carousel-item">
               <figure class="text-center">
                 <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
-                  <p>Client service <br> is about excellence and integrity <br> above all else and it should be <br> a continually evolving process.</p>
+                  <p>Client service <br> is about excellence and integrity <br> above all else and it should be <br> a
+                    continually evolving process.</p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Kirk Paulsen, President, River Oak Partners</cite>
+                  <cite title="Source Title" style="color: #fff; opacity: 70%;">Kirk Paulsen, President, River Oak
+                    Partners</cite>
                 </figcaption>
               </figure>
-              
+
             </div>
             <div class="carousel-item">
               <figure class="text-center">
                 <blockquote class="blockquote" style="color: #fff; font-family: 'Lexend Mega', sans-serif;">
-                  <p>Service, in short, <br> is not what you do, but who you are. <br> It is a way of living <br> that you need to bring to everything you do.</p>
+                  <p>Service, in short, <br> is not what you do, but who you are. <br> It is a way of living <br> that
+                    you need to bring to everything you do.</p>
                 </blockquote>
                 <figcaption class="blockquote-footer">
-                   <cite title="Source Title" style="color: #fff; opacity: 70%;">Betsy Sanders, Director, Consultant, Mentor & Writer</cite>
+                  <cite title="Source Title" style="color: #fff; opacity: 70%;">Betsy Sanders, Director, Consultant,
+                    Mentor & Writer</cite>
                 </figcaption>
               </figure>
-              
+
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -497,7 +574,8 @@
       <div class="col-sm-12">
         <section class="forms-section">
           <h1 class="section-title">Create a new account</h1>
-          <h4 class="center" style="color: #c6c6db; font-weight: 100; margin-top: 10px;">See how easy we have made it for you.</h4>
+          <h4 class="center" style="color: #c6c6db; font-weight: 100; margin-top: 10px;">See how easy we have made it
+            for you.</h4>
           <div class="forms">
             <div class="form-wrapper is-active">
               <button type="button" class="switcher switcher-login">
@@ -516,8 +594,15 @@
                     <input id="login-email" name="e_mail" type="email" required placeholder="abc@example.com">
                   </div>
                   <div class="input-block">
-                    <label for="login-password">Password</label>
-                    <input id="login-password" name="password" type="password" required>
+                    <label for="login-password1">Password</label>
+                    <input id="login-password1" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                  </div>
+                  <div id="message1">
+                    <h6 style="margin-bottom: 10px;">Password must contain the following:</h6>
+                    <p id="letter1" class="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital1" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number1" class="invalid">A <b>number</b></p>
+                    <p id="length1" class="invalid">Minimum <b>8 characters</b></p>
                   </div>
                   <div class="input-block">
                     <label for="input_phone">Phone no</label>
@@ -536,7 +621,7 @@
                     <input id="input_state" name="state" type="text" required>
                   </div>
                 </fieldset>
-                <button type="submit" class="btn-login">SIGN UP</button>
+                <input type="submit" class="btn-login" value="Sign Up"></input>
               </form>
             </div>
             <div class="form-wrapper">
@@ -581,8 +666,15 @@
                     </select>
                   </div>
                   <div class="input-block">
-                    <label for="login-password">Password</label>
-                    <input id="login-password" name="password" type="password" required>
+                    <label for="login-password2">Password</label>
+                    <input id="login-password2" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                  </div>
+                  <div id="message2">
+                    <h6>Password must contain the following:</h6>
+                    <p id="letter2" class="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital2" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number2" class="invalid">A <b>number</b></p>
+                    <p id="length2" class="invalid">Minimum <b>8 characters</b></p>
                   </div>
                   <div class="input-block">
                     <label for="input_phone">Phone no</label>
@@ -603,7 +695,7 @@
 
 
                 </fieldset>
-                <button type="submit" class="btn-signup">Continue</button>
+                <input type="submit" class="btn-signup" value="Sign Up"></input>
               </form>
             </div>
           </div>
@@ -619,6 +711,124 @@
             })
           })
 
+        </script>
+        <script>
+          var myInput1 = document.getElementById("login-password1");
+          var letter1 = document.getElementById("letter1");
+          var capital1 = document.getElementById("capital1");
+          var number1 = document.getElementById("number1");
+          var length1 = document.getElementById("length1");
+
+          // When the user clicks on the password field, show the message box
+          myInput1.onfocus = function () {
+            document.getElementById("message1").style.display = "block";
+          }
+
+          // When the user clicks outside of the password field, hide the message box
+          myInput1.onblur = function () {
+            document.getElementById("message1").style.display = "none";
+          }
+
+          // When the user starts to type something inside the password field
+          myInput1.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput1.value.match(lowerCaseLetters)) {
+              letter1.classList.remove("invalid");
+              letter1.classList.add("valid");
+            } else {
+              letter1.classList.remove("valid");
+              letter1.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput1.value.match(upperCaseLetters)) {
+              capital1.classList.remove("invalid");
+              capital1.classList.add("valid");
+            } else {
+              capital1.classList.remove("valid");
+              capital1.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput1.value.match(numbers)) {
+              number1.classList.remove("invalid");
+              number1.classList.add("valid");
+            } else {
+              number1.classList.remove("valid");
+              number1.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput1.value.length >= 8) {
+              length1.classList.remove("invalid");
+              length1.classList.add("valid");
+            } else {
+              length1.classList.remove("valid");
+              length1.classList.add("invalid");
+            }
+          }
+        </script>
+        <script>
+          var myInput2 = document.getElementById("login-password2");
+          var letter2 = document.getElementById("letter2");
+          var capital2 = document.getElementById("capital2");
+          var number2 = document.getElementById("number2");
+          var length2 = document.getElementById("length2");
+
+          // When the user clicks on the password field, show the message box
+          myInput2.onfocus = function () {
+            document.getElementById("message2").style.display = "block";
+          }
+
+          // When the user clicks outside of the password field, hide the message box
+          myInput2.onblur = function () {
+            document.getElementById("message2").style.display = "none";
+          }
+
+          // When the user starts to type something inside the password field
+          myInput2.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput2.value.match(lowerCaseLetters)) {
+              letter2.classList.remove("invalid");
+              letter2.classList.add("valid");
+            } else {
+              letter2.classList.remove("valid");
+              letter2.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput2.value.match(upperCaseLetters)) {
+              capital2.classList.remove("invalid");
+              capital2.classList.add("valid");
+            } else {
+              capital2.classList.remove("valid");
+              capital2.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput2.value.match(numbers)) {
+              number2.classList.remove("invalid");
+              number2.classList.add("valid");
+            } else {
+              number2.classList.remove("valid");
+              number2.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput2.value.length >= 8) {
+              length2.classList.remove("invalid");
+              length2.classList.add("valid");
+            } else {
+              length2.classList.remove("valid");
+              length2.classList.add("invalid");
+            }
+          }
         </script>
       </div>
     </div>
