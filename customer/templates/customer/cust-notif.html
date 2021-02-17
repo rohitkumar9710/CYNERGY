@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notifications</title>
+    <meta charset="UTF-8">
+{% load static %}
+    <link rel="stylesheet" href="{% static 'cust-notif.css' %}">
+    <link href="{% static 'nav.css' %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <style>
+        body{
+        background-image: url("{% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %}");
+        height: auto;
+        background-repeat: repeat-y;
+        }</style>
+
+
+</head>
+
+<body>
+{% load static %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/loggedin/services">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/loggedin/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">History</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link notification dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Notification
+                            <span class="badge">3</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/customer/login/loggedin/notification">I am Customer</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+                        </ul>
+                        <style>
+                        .notification {
+                            color: white;
+                            text-decoration: none;
+                            padding: 15px 26px;
+                            position: relative;
+                            display: inline-block;
+                            border-radius: 2px;
+                        }
+
+                        .notification .badge {
+                            position: absolute;
+                            top: -10px;
+                            right: -10px;
+                            padding: 5px 10px;
+                            border-radius: 50%;
+                            background: red;
+                            color: white;
+                        }
+                    </style>
+                    </li>
+                    
+                    
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Location</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/loggedin/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donate Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/loggedin/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/loggedin/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'nav.js' %}"></script>
+
+    <!-- History -->
+    <div class="main-main">
+        <div class="main-index">
+            <h1>Notifications</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="jumbotron">
+                        <div class="notif-item">
+                            <h5>Mr. Ram Kumar Yadav has accepted your service request.</h5>
+                            <p>Job: Carpenter</p>
+                            <p style="font-weight: 800;">Here are the contact details:</p>
+                            <p class="indent">Phone: 9876543210</p>
+                            <p>Email: abc@example.com</p>
+                            <p>We hope you recieve a great service.</p>
+                            <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="jumbotron">
+                        <div class="notif-item">
+                            <h5>Mr. Ram Kumar Yadav has accepted your service request.</h5>
+                            <p>Job: Carpenter</p>
+                            <p style="font-weight: 800;">Here are the contact details:</p>
+                            <p class="indent">Phone: 9876543210</p>
+                            <p>Email: abc@example.com</p>
+                            <p>We hope you recieve a great service.</p>
+                            <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p>
+
+                        </div>
+                    </div>
+                </div>
+                       <!-- feedback form -->
+                <div class="col-4">
+                            <button class="open-button" onclick="openForm()">Feedback Form</button>
+                            <div class="form-popup" id="myForm">
+                                <form action="" class="form-container">
+                                    <h1>Feedback</h1>
+
+                                    <input type="text" placeholder="Serviceman name" name="name" required>
+                                    <label for="rating"><b>Rate the service: </b></label>
+                                    <select class="custom-select" id="rating">
+                                        <option value="5" selected>5</option>
+                                        <option value="4">4</option>
+                                        <option value="3">3</option>
+                                        <option value="2">2</option>
+                                        <option value="1">1</option>
+                                    </select>
+                                    <label for="comment" style="margin-top: 5px;"><b>Feedback:</b></label>
+                                    <textarea name="feedback-text" id="feedback-text" cols="36" rows="4"></textarea>
+                                    <button type="submit" class="btn">Submit</button>
+                                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    
+            </div>
+        </div>
+        <script>
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+        <!-- footer -->
+        <footer class="footer" style="z-index: 1;">
+            <div class="social">
+            <a href="https://www.facebook.com/Cynergy-180036667042091" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
+                alt=""></a>
+        <a href="https://www.instagram.com/invites/contact/?i=1xih8njqsuwpu&utm_content=kxk5sio" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
+                alt=""></a>
+        <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" ></a>
+        <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
+                alt=""></a>
+
+
+        </div>
+            <div id="copy">
+                <p class="copy">Copyright © CYNERGY 2021</p>
+            </div>
+        </footer>
+
+
+
+
+
+</body>
+
+</html>

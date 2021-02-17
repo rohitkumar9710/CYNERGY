@@ -23,7 +23,7 @@ def otp(request):
     
     B = list(Custinfo.objects.filter(email = email))
     if len(B)>0:
-        return HttpResponse("you allready have a account")
+        return HttpResponse('<script>window.location = "/customer/login";window.alert("You already have a account , please login from that");</script>')
     else:  
         return render(request, 'customer/otp.html')
 
@@ -56,7 +56,7 @@ def profile_customer(request):
             
             return HttpResponse('<script>window.location = "/customer/login";window.alert("Your Password is wrong ");</script>')
     else:
-        return HttpResponse("no accout with this email id , please check your email or creat one ")        
+        return HttpResponse('<script>window.location = "/";window.alert("No account found of this email id . Kindly create one or check your email id. ");</script>')        
 
 def services(request):
     B = Custinfo.objects.get(email = K[0])
@@ -208,3 +208,12 @@ def search_request(request):
     work.save()
     
     return HttpResponse("<script>window.location = '/customer/login/loggedin/services'</script>")
+
+def notification(request):
+    B = Custinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        
+        return render(request,'customer/cust-notif.html')
+    else:
+        return HttpResponse("<script>window.location = '/customer/login'</script>")
