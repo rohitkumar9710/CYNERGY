@@ -27,7 +27,7 @@ def otp(request):
     email1 = A[1]
     B = list(Serviceinfo.objects.filter(email = email1))
     if len(B)>0:
-        return HttpResponse("you allready have a account")
+        return HttpResponse('<script>window.location = "/serviceman/login";window.alert("You already have a account , please login from that");</script>')
     else:  
         return render(request, 'serviceman/otp.html')   
 
