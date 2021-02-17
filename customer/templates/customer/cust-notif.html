@@ -33,7 +33,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">Welcome</a>
+            <a class="navbar-brand" href="#">CYNERGY</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -49,17 +49,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/customer/login/loggedin/profile">Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customer/login/loggedin/history">History</a>
-                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link notification " href="/customer/login/loggedin/notification" id="navbarDropdown" role="button" 
                         aria-expanded="false">
                         Notification
-                            <span class="badge">1</span>
+                            <!-- <span class="badge">1</span> -->
                         </a> 
                         <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/customer/login/loggedin/notification">I am Customer</a></li>
+                        <li><a class="dropdown-item" href="/customer/login/loggedin/notification">You Requested  electrecian Ram Das </a></li>
                         
                         <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
                         </ul> -->
@@ -90,6 +88,9 @@
                         <a class="nav-link" href="#">Location</a>
                     </li> -->
                     <li class="nav-item">
+                        <a class="nav-link" href="/customer/login/loggedin/history">History</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/customer/login/loggedin/about">About Us</a>
                     </li>
                     <li class="nav-item">
@@ -116,33 +117,51 @@
         </div>
         <div class="container-fluid">
             <div class="row">
+                {% for i in notification %}
                 <div class="col-12">
                     <div class="jumbotron">
+
                         <div class="notif-item">
-                            <h5>Mr. Ram Kumar Yadav has accepted your service request.</h5>
-                            <p>Job: Carpenter</p>
+                            <h5>You have requested {{i.serviceman_name}}</h5>
+                            <p>Job: {{i.work}}</p>
                             <p style="font-weight: 800;">Here are the contact details:</p>
-                            <p class="indent">Phone: 9876543210</p>
-                            <p>Email: abc@example.com</p>
+                            <p class="indent">Phone: {{i.serviceman_phone}}</p>
+                            <p>Email: {{i.serviceman_email}}</p>
                             <p>We hope you recieve a great service.</p>
-                            <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p>
+                            <input onclick="change1()" type="button" value="Cancel Request" id="myButton1"
+                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px; "></input>
+
+                        <script>
+                        function change1() // no ';' here
+                        {
+                            var elem1 = document.getElementById("myButton1");
+                            
+                            if (elem1.value == "Cancel Request")  {
+                                elem1.value = "Cancelled"; elem1.style.backgroundColor = "red"; elem1.style.color = "white";
+                            }
+                        }</script>
+                            <!-- <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p> -->
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+                
                 <div class="col-12">
                     <div class="jumbotron">
                         <div class="notif-item">
-                            <h5>You have sent a request to mr eren  yegar</h5>
-                            <p>Job: Carpenter</p>
+                            <h5>Mr Ram Das accepted your request</h5>
+                            <p>Job: Electrecian</p>
                             <p style="font-weight: 800;">Here are the contact details:</p>
-                            <p class="indent">Phone: 9876543210</p>
-                            <p>Email: abc@example.com</p>
+                            <p class="indent">Phone: 8413853393</p>
+                            <p>Email:  ramdas@gmail.com</p>
+                            <p>He/She will be contacting you anytime soon. You may contact him/her too.</p>
                             <p>We hope you recieve a great service.</p>
                             <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p>
 
                         </div>
                     </div>
                 </div>
+                
                        <!-- feedback form -->
                 <div class="col-4">
                             <button class="open-button" onclick="openForm()">Feedback Form</button>
@@ -150,7 +169,12 @@
                                 <form action="" class="form-container">
                                     <h1>Feedback</h1>
 
-                                    <input type="text" placeholder="Serviceman name" name="name" required>
+                                    <input type="name" placeholder="Serviceman name" name="name" required class="form-control">
+                                    <input type="email" placeholder="Serviceman's email" name="name" required class="form-control">
+                                    
+                                     <p>Date of Service:</p>            
+                                    <input type="date" name="deadline_date" required class="form-control" id="ldate" placeholder="DD/MM/YYYY" name="lname">
+                                        
                                     <label for="rating"><b>Rate the service: </b></label>
                                     <select class="custom-select" id="rating">
                                         <option value="5" selected>5</option>

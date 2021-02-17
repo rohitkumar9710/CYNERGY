@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Custom Search</title>
+    <title>NOTIFICATIONS</title>
     <meta charset="UTF-8">
-{% load static %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'worker-notif.css' %}">
     <link href="{% static 'nav.css' %}" rel="stylesheet">
     <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
@@ -19,11 +19,11 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
     <style>
-    body{
-    background-image: url({% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %});
-    height: auto;
+        body {
+            background-image: url({% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %});
+            height: auto;
 
-    }
+        }
     </style>
 
 
@@ -35,7 +35,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">Welcome</a>
+            <a class="navbar-brand" href="#">CYNERGY</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -45,22 +45,53 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/services">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/serviceman/login/loggedin/profile">Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link notification " href="/serviceman/login/loggedin/notification"
+                            id="navbarDropdown" role="button" aria-expanded="false">
+                            Notification
+                            <span class="badge">{{len}}</span>
+                        </a>
+
+                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/customer/login/loggedin/notification">You Requested  electrecian Ram Das </a></li>
+                        
+                        <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+                        </ul> -->
+                        <style>
+                            .notification {
+                                color: white;
+                                text-decoration: none;
+                                padding: 15px 26px;
+                                position: relative;
+                                display: inline-block;
+                                border-radius: 2px;
+                            }
+
+                            .notification .badge {
+                                position: absolute;
+                                top: -10px;
+                                right: -10px;
+                                padding: 5px 10px;
+                                border-radius: 50%;
+                                background: red;
+                                color: white;
+                            }
+                        </style>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/serviceman/login/loggedin/history">History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/serviceman/login/loggedin/aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/serviceman/login/loggedin/profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/serviceman/login/loggedin/notification">Notification</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Donate Us</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/donateus">Donate Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/serviceman/login/loggedin/contactus">Contact</a>
@@ -83,20 +114,34 @@
             <h1>Notifications</h1>
         </div>
         <div class="container-fluid">
+            {% for i in data %}
             <div class="jumbotron">
                 <div class="history-items">
-                    <h3>You have a new service request from Mr. Rohit Kumar.</h3>
-                    <p>Customer's Email: rohit@gmail.com</p>
-                    <p>Customer's Phone: 1234567890</p>
-                    <p>Job: Carpenter</p>
-                    <p>Deadline: 25/10/2021</p>
+                    <h3>You have a new service request from {{i.customer_name}} </h3>
+                    <p>Customer's Email: {{i.customer_email}}</p>
+                    <p>Customer's Phone: {{i.customer_phone}}</p>
+                    <p>Job: {{i.work}}</p>
+                    <p>Request Date: {{i.request_date}}</p>
+                    <p>Deadline: {{i.deadline_date}}</p>
                     <p style="line-height: 25px; font-weight: 800;">You have to either accept the job, and contact the
                         customer <br> or reject the same taking your convenience in consideration.</p>
-                    <input onclick="change1()" type="button" value="Accept" id="myButton1"
-                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px; "></input>
-                    <input onclick="change2()" type="button" value="Reject" id="myButton2"
-                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px;"></input>
-
+                    <!-- <input onclick="change1()" type="button" value="Accept" id="myButton1"
+                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px; "></input> -->
+                    <!-- <input onclick="change2()" type="button" value="Reject" id="myButton2"
+                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px;"></input>  -->
+                    <form method="POST" action="/serviceman/login/loggedin/notification/req_accept"> {% csrf_token %}
+                        <input type="text" name="name1" value= {{i.customer_name}} style="display: None;"> 
+                        <input type="text" name="job1" value={{i.work}} style="display: None;"> 
+                        <input type="hidden" name="desc1"  value='{{i.request_date|date:"Y-m-d"}}' style="display: None;">
+        
+                        <button type="submit">Accept</button>
+                    </form>
+                    <form method="POST" action="/serviceman/login/loggedin/notification/req_rejected"> {% csrf_token %}
+                        <input type="text" name="name1" value= {{i.customer_name}} style="display: None;"> 
+                        <input type="text" name="job1" value={{i.work}} style="display: None;"> 
+                        <input type="hidden" name="desc1"  value='{{i.request_date|date:"Y-m-d"}}' style="display: None;">
+                         <button type="submit">Reject</button>
+                    </form>
                     <script>
                         function change1() // no ';' here
                         {
@@ -117,7 +162,7 @@
                         }
                     </script>
                 </div>
-            </div>
+            </div>{% endfor %}
         </div>
 
     </div>
@@ -131,13 +176,13 @@
     <!-- footer -->
     <footer class="footer">
         <div class="social">
-            <a href="https://www.facebook.com/Cynergy-180036667042091" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
-                alt=""></a>
-        <a href="https://www.instagram.com/invites/contact/?i=1xih8njqsuwpu&utm_content=kxk5sio" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
-                alt=""></a>
-        <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" ></a>
-        <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
-                alt=""></a>
+            <a href="https://www.facebook.com/Cynergy-180036667042091" class="facebook" title="Facebook"><img
+                    src="{% static 'pics/img-footer/icons8-facebook-48.png' %}" alt=""></a>
+            <a href="https://www.instagram.com/invites/contact/?i=1xih8njqsuwpu&utm_content=kxk5sio" class="instagram"
+                title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}" alt=""></a>
+            <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}"></a>
+            <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
+                    alt=""></a>
 
 
         </div>

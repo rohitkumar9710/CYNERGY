@@ -34,7 +34,7 @@ def status(request):
         person.save()
         return render(request, 'customer/succes.html')
     else:
-        return render(request, 'customer/failed.html')
+        return HttpResponse('<script>window.location = "/customer/login";window.alert("You entered a wrong otp");</script>')
 
 
 def login(request):
@@ -206,7 +206,8 @@ def search_request(request):
     a = request.POST.get('request')
     b= request.POST.get('deadline_date')
     work2 = request.POST.get('work1')
-    work5 = Custom_order(customer_email=K[0],serviceman_email=a,request_date=timezone.now(),deadline_date=b,work = work2)
+    worker = Serviceinfo.objects.get(email = a)
+    work5 = Custom_order(customer_email=K[0],customer_name=B.cust_name,customer_phone=B.phone_no,serviceman_email=a,serviceman_name=worker.name,serviceman_phone=worker.phone_no,request_date=timezone.now(),work = work2,deadline_date=b)
     work5.save()
     
     return HttpResponse('<script>window.location = "/customer/login/loggedin/services";window.alert("Your request sent succesfully");</script>')
@@ -215,8 +216,10 @@ def notification(request):
     B = Custinfo.objects.get(email = K[0])
     
     if B.loginstate == "yes":
-        
-        return render(request,'customer/cust-notif.html')
+        not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+        #not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")        
+        data = {"notification":not1.reverse()}
+        return render(request,'customer/cust-notif.html',data)
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
 

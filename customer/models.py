@@ -34,7 +34,11 @@ class Contact(models.Model):
 
 class Custom_order(models.Model):
     customer_email = models.CharField(max_length = 150)
+    customer_name=models.CharField(default="", max_length=150)
+    customer_phone = models.IntegerField()
     serviceman_email = models.CharField( max_length=150)
+    serviceman_name = models.CharField(default="", max_length=50)
+    serviceman_phone = models.IntegerField()
     accept_status = models.CharField( max_length=50, default= "None")
     work_done_status = models.CharField( default= "None", max_length=50)
     feedback = models.CharField(default = "None", max_length=50)
@@ -42,7 +46,7 @@ class Custom_order(models.Model):
     deadline_date = models.DateField(null=True, blank=True)
     accept_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
-    work_description = models.CharField(default = "None", max_length=50)
+    work_description = models.CharField(default = "None", max_length=1000)
     work = models.CharField(default="None", max_length=50)
 
     def __str__(self):

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Select your service</title>
+    <title>History</title>
     <meta charset="UTF-8">
 {% load static %}
     <link rel="stylesheet" href="{% static 'worker-history-page.css' %}">
@@ -34,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">Welcome</a>
+            <a class="navbar-brand" href="#">CYNERGY</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -44,28 +44,59 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/services">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/serviceman/login/loggedin/profile">Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link notification " href="/serviceman/login/loggedin/notification" id="navbarDropdown" role="button" 
+                        aria-expanded="false">
+                        Notification
+                            <span class="badge">{{len}}</span>
+                        </a> 
+                         
+                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/customer/login/loggedin/notification">You Requested  electrecian Ram Das </a></li>
+                        
+                        <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+                        </ul> -->
+                        <style>
+                        .notification {
+                            color: white;
+                            text-decoration: none;
+                            padding: 15px 26px;
+                            position: relative;
+                            display: inline-block;
+                            border-radius: 2px;
+                        }
+
+                        .notification .badge {
+                            position: absolute;
+                            top: -10px;
+                            right: -10px;
+                            padding: 5px 10px;
+                            border-radius: 50%;
+                            background: red;
+                            color: white;
+                        }
+                    </style>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/history">History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">History</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/donateus">Donate Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/templates/login.html">Login</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/contactus">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Location</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Donate Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/logout">Logout</a>
                     </li>
 
                 </ul>

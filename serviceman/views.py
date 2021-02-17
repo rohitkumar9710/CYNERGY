@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from .models import Serviceinfo
 from customer.models import Contact,Custom_order,Customer_random
+import datetime
 # Create your views here.
 
 
@@ -39,8 +40,7 @@ def status(request):
         person.save()
         return render(request, 'serviceman/succes.html')
     else:
-        return render(request, 'serviceman/failed.html')
-
+        return HttpResponse('<script>window.location = "/";window.alert("You entered a wrong otp");</script>')
 
 
 
@@ -70,45 +70,12 @@ def services(request):
     B = Serviceinfo.objects.get(email = K[0])
     k = B.loginstate
     if k == "yes":
-        return render(request, 'serviceman/worker-service-list.html')
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        return render(request, 'serviceman/worker-service-list.html',{"len":l})
     else:
         return HttpResponse("<script>window.location = '/serviceman/login'</script>")
 
-def aboutus(request):
-    B = Serviceinfo.objects.get(email = K[0])
-    k = B.loginstate
-    if k == "yes":
-        return render(request, 'serviceman/about_us.html')
-    else:
-        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
-
-def contactus(request):
-    B = Serviceinfo.objects.get(email = K[0])
-    k = B.loginstate
-    if k == "yes":
-        return render(request, 'serviceman/contact_us.html')
-    else:
-        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
-
-def contact_submit(request):
-    name2 = request.POST.get('name1')
-    email2 = request.POST.get('email1')
-    subject2 = request.POST.get('subject1')
-    comment2 = request.POST.get('comment1')
-    comment = Contact(name = name2, email = email2, subject = subject2, comment = comment2,date = timezone.now())
-    comment.save()
-    return HttpResponse("<script>window.location = '/serviceman/login/loggedin/services'</script>")
-
-def logout(request):
-    B = Serviceinfo.objects.get(email = K[0])
-    
-    if B.loginstate == "yes":
-        B.loginstate = "no"
-        B.save()
-        print("logged out")
-        return HttpResponse("<script>window.location = '/'</script>")
-    else:
-        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
 
 def servicelist_update(request):
     carpenter1 = request.POST.get('carpenter')
@@ -128,10 +95,48 @@ def servicelist_update(request):
     B.save()
     return HttpResponse("<script>window.location = '/serviceman/login/loggedin/services'</script>")
 
-def profile(request):
+def aboutus(request):
     B = Serviceinfo.objects.get(email = K[0])
-    data = {"name":B.name,"gender":B.gender,"date":B.sign_up_date,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
-    return render(request,'serviceman/service-profile.html',data)
+    k = B.loginstate
+    if k == "yes":
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        return render(request, 'serviceman/about_us.html',{"len":l})
+    else:
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+#*************************************contact us***************************
+def contactus(request):
+    B = Serviceinfo.objects.get(email = K[0])
+    k = B.loginstate
+    if k == "yes":
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        return render(request, 'serviceman/contact_us.html',{"len":l})
+    else:
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+
+def contact_submit(request):
+    name2 = request.POST.get('name1')
+    email2 = request.POST.get('email1')
+    subject2 = request.POST.get('subject1')
+    comment2 = request.POST.get('comment1')
+    comment = Contact(name = name2, email = email2, subject = subject2, comment = comment2,date = timezone.now())
+    comment.save()
+    return HttpResponse("<script>window.location = '/serviceman/login/loggedin/services'</script>")
+
+#****************************profil part****************************
+def profile(request):
+    B =Serviceinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        data = {"name":B.name,"gender":B.gender,"date":B.sign_up_date,"len":l,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
+        return render(request,'serviceman/service-profile.html',data)
+        
+    else:
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+   
 
 def profile_update(request):
     name2 = request.POST.get('name1')
@@ -159,21 +164,48 @@ def profile_update(request):
     B.save()
     return HttpResponse("<script>window.location = '/serviceman/login/loggedin/profile'</script>")
 
+
+
+#****************************notification********************************
 def notification(request):
     B =Serviceinfo.objects.get(email = K[0])
     
     if B.loginstate == "yes":
-    
-        return render(request,'serviceman/worker-notif.html')
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        S1 = S.reverse()
+        return render(request,'serviceman/worker-notif.html',{"data":S1,"len":l})
     else:
         return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+
+def req_accept(request):
+    name2 = request.POST.get('name1')
+    work2 = request.POST.get('job1')
+    desc2 = request.POST.get('desc1')
+    #date = datetime.datetime.strptime(desc2, '%m/%d/%Y').strftime('%m/%d/%Y')
+    X = Custom_order.objects.get(customer_name=name2,work=work2,request_date=desc2)
+    X.accept_status = "Accepted"
+    X.save()
+    return HttpResponse("<script>window.location = '/serviceman/login/loggedin/notification';window.alert('You accepted the work, kindly contact him and ask other information and Complete his/her work');</script>")
+
+def req_rejected(request):
+    name2 = request.POST.get('name1')
+    work2 = request.POST.get('job1')
+    desc2 = request.POST.get('desc1')
+    #date = datetime.datetime.strptime(desc2, '%m/%d/%Y').strftime('%m/%d/%Y')
+    X = Custom_order.objects.get(customer_name=name2,work=work2,request_date=desc2)
+    X.accept_status = "Rejected"
+    X.save()
+    return HttpResponse("<script>window.location = '/serviceman/login/loggedin/notification';window.alert('This work has been rejected ');</script>")
+#*******************************************************
 
 def history(request):
     B = Serviceinfo.objects.get(email = K[0])
     
     if B.loginstate == "yes":
-        
-        return render(request,'serviceman/worker_history_page.html')
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        return render(request,'serviceman/worker_history_page.html',{"len":l})
     else:
         return HttpResponse("<script>window.location = '/serviceman/login'</script>")
 
@@ -182,7 +214,20 @@ def donateus(request):
     B = Serviceinfo.objects.get(email = K[0])
     
     if B.loginstate == "yes":
-        
-        return render(request,'serviceman/donate.html')
+        S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
+        l = len(S)
+        return render(request,'serviceman/donate.html',{"len":l})
+    else:
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+
+
+def logout(request):
+    B = Serviceinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        B.loginstate = "no"
+        B.save()
+        print("logged out")
+        return HttpResponse("<script>window.location = '/'</script>")
     else:
         return HttpResponse("<script>window.location = '/serviceman/login'</script>")

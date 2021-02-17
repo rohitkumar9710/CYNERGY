@@ -35,7 +35,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#">Welcome</a>
+            <a class="navbar-brand" href="#">CYNERGY</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -47,23 +47,54 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/serviceman/login/loggedin/services">Home</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/serviceman/login/loggedin/profile">Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link notification " href="/serviceman/login/loggedin/notification" id="navbarDropdown" role="button" 
+                        aria-expanded="false">
+                        Notification
+                            <span class="badge">{{len}}</span>
+                        </a> 
+                         
+                        <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/customer/login/loggedin/notification">You Requested  electrecian Ram Das </a></li>
+                        
+                        <li><a class="dropdown-item" href="/serviceman/">I am Service Provider</a></li>
+                        </ul> -->
+                        <style>
+                        .notification {
+                            color: white;
+                            text-decoration: none;
+                            padding: 15px 26px;
+                            position: relative;
+                            display: inline-block;
+                            border-radius: 2px;
+                        }
+
+                        .notification .badge {
+                            position: absolute;
+                            top: -10px;
+                            right: -10px;
+                            padding: 5px 10px;
+                            border-radius: 50%;
+                            background: red;
+                            color: white;
+                        }
+                    </style>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/serviceman/login/loggedin/history">History</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/serviceman/login/loggedin/aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/donateus">Donate Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Location</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Donate Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/serviceman/login/loggedin/contact">Contact</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/contactus">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/serviceman/login/loggedin/logout">Logout</a>
@@ -88,7 +119,7 @@
                     </div>
                     <div class="card-block">
                         <div class="user-image">
-                            <img src="{% static 'pics/img-cust-profile/Intro.jpg' %}" class="img-radius"
+                            <img src="/media/customer/images/images.png" class="img-radius"
                                 alt="User-Profile-Image">
                         </div>
                         <h6 class="f-w-600 m-t-25 m-b-10">{{name}}</h6>
