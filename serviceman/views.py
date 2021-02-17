@@ -62,7 +62,7 @@ def profile_serviceman(request):
             return HttpResponse("<script>window.location = '/serviceman/login/loggedin/services'</script>")
         else:
             
-            return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+            return HttpResponse("<script>window.location = '/serviceman/login';window.alert('Your Password is wrong' );</script>")
     else:
         return HttpResponse("no accout with this email id , please check your email or creat one ")   
 
@@ -159,3 +159,11 @@ def profile_update(request):
     B.save()
     return HttpResponse("<script>window.location = '/serviceman/login/loggedin/profile'</script>")
 
+def notification(request):
+    B =Serviceinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        
+        return render(request,'serviceman/worker-notif.html')
+    else:
+        return HttpResponse("<script>window.location = '/customer/login'</script>")

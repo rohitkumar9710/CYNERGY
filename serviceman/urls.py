@@ -10,6 +10,7 @@ urlpatterns = [
     path("login/loggedin/services",views.services,name = "services"),
     path("login/loggedin/services/update",views.servicelist_update,name = "services_update"),
     path("login/loggedin/aboutus",views.aboutus,name = "aboutus"),
+    path("login/loggedin/notification",views.notification,name = "notification"),
     path("login/loggedin/logout",views.logout,name = "logout"),
     path("login/loggedin/contactus",views.contactus,name = "contactus"),
     path("login/loggedin/profile",views.profile,name = "profile"),

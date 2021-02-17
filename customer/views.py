@@ -219,3 +219,12 @@ def notification(request):
         return render(request,'customer/cust-notif.html')
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
+
+def history(request):
+    B = Custinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        
+        return render(request,'customer/customer_history_page.html')
+    else:
+        return HttpResponse("<script>window.location = '/customer/login'</script>")
