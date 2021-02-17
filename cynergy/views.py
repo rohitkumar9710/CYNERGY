@@ -19,4 +19,4 @@ def contact_status(request):
     comment2 = request.POST.get('comment1')
     comment = Contact(name = name2, email = email2, subject = subject2, comment = comment2,date = timezone.now())
     comment.save()
-    return HttpResponse("<script>window.location = '/'</script>")
+    return HttpResponse("<script>window.location = '/';window.alert('Your message sent succesfully');</script>")

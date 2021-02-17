@@ -43,7 +43,8 @@ class Custom_order(models.Model):
     accept_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     work_description = models.CharField(default = "None", max_length=50)
-    
+    work = models.CharField(default="None", max_length=50)
+
     def __str__(self):
         return self.customer_email
 

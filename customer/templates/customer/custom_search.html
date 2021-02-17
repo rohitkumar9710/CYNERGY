@@ -120,11 +120,12 @@
 
                     <form method = "POST" action = "/customer/login/loggedin/services/search/request">{% csrf_token %}
                     <input type="text" value={{i.email}} name="request"  style="display: none">
+                    <input type="text" value={{job}} name="work1"  style="display: none">
                     
                     <label class="control-label col-sm-2" for="lname">Deadline: </label>
                     <div class="col-sm-2">          
                     <input type="date" name="deadline_date" required class="form-control" id="ldate" placeholder="DD/MM/YYYY" name="lname">
-                    </div>
+                    </div> 
                     
                     <button  type="submit"  id="myButton1" 
                         style="background-color: #c6c6db; margin-top: 5px; ">REQUEST</button></form>

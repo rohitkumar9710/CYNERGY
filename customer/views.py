@@ -158,27 +158,27 @@ def search(request):
             if service == 'cleaning':
                 service_data = Serviceinfo.objects.filter(cleaning='on')
                 print(service_data)
-                return render(request,'customer/custom_search.html',{"data":service_data})
+                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
             elif service == 'technecian':
                 service_data = Serviceinfo.objects.filter(technecian='on')
                 print(service_data)    
-                return render(request,'customer/custom_search.html',{"data":service_data})
+                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
             elif service == 'plumber':
                 service_data = Serviceinfo.objects.filter(plumber='on')
                 print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data})
+                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
             elif service == 'electrecian':
                 service_data = Serviceinfo.objects.filter(electrecian='on')
                 print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data})
+                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
             elif service == 'carpenter':
                 service_data = Serviceinfo.objects.filter(carpenter='on')
                 print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data})
+                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
             elif service == 'kitchen':
                 service_data = Serviceinfo.objects.filter(kitchen='on')
                 print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data})
+                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
             else:
                 return HttpResponse("Entered Wrong information")
             
@@ -204,10 +204,12 @@ def random_data(request):
 def search_request(request):
     B = Custinfo.objects.get(email = K[0])
     a = request.POST.get('request')
-    work = Custom_order(customer_email=K[0],serviceman_email=a,request_date=timezone.now())
-    work.save()
+    b= request.POST.get('deadline_date')
+    work2 = request.POST.get('work1')
+    work5 = Custom_order(customer_email=K[0],serviceman_email=a,request_date=timezone.now(),deadline_date=b,work = work2)
+    work5.save()
     
-    return HttpResponse("<script>window.location = '/customer/login/loggedin/services'</script>")
+    return HttpResponse('<script>window.location = "/customer/login/loggedin/services";window.alert("Your request sent succesfully");</script>')
 
 def notification(request):
     B = Custinfo.objects.get(email = K[0])
