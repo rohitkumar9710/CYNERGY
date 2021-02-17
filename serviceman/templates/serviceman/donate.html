@@ -5,7 +5,6 @@
     <title>Select your service</title>
     <meta charset="UTF-8">
 {% load static %}
-    <link rel="stylesheet" href="{% static 'worker-history-page.css' %}">
     <link href="{% static 'nav.css' %}" rel="stylesheet">
     <!-- <link rel="stylesheet" href="../static/css/footer.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
@@ -19,12 +18,46 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
     <style>
-    body{
+        *{
+    margin:0;
+    padding:0;
+}
+
+/* BODY */
+body{
     background-image: url({% static 'pics/img-about-us/background_tools_drawings_patterns_18527_2560x1440.jpg' %});
     height: auto;
+    background-repeat: repeat-y;
+    padding-bottom: 0 ;
 
-    }
+}
+.main-index{
+    width: 100%;
+    height: 150px;
+    padding-top: 30px;
+    margin-top: 200px;
+}
+.main-index h1{
+    font-size: 50px;
+    padding-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #c6c6db;
+    text-align: center;
+    padding-top: 50px;
+    /* padding-bottom: 50px; */
+}
+.main-index h6{
+    /* font-size: 50px; */
+    /* padding-top: 50px; */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #c6c6db;
+    text-align: center;
+    /* padding-top: 50px; */
+    /* padding-bottom: 50px; */
+}
+
     </style>
+
 
 
 </head>
@@ -44,28 +77,28 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/services">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">History</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/notification">Notification</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/templates/login.html">Login</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/history">History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Location</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/donateus">Donate Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Donate Us</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/contactus">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="/serviceman/login/loggedin/logout">Logout</a>
                     </li>
 
                 </ul>
@@ -75,30 +108,25 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static 'nav.js' %}"></script>
-
-    <!-- History -->
-    <div class="main-main">
-        <div class="main-index">
-            <h1>Your History</h1>
-        </div>
-        <div class="container-fluid">
-            <div class="jumbotron">
-                        <div class="history-items">
-                            <h3>Service <span id=service_number>1</span></h3>
-                            <p>Customer name: <span id="serviceman_name"> Mr. Ram Kumar Yadav</span></p>
-                            <p>Customer ID: <span id="serviceman_id">123456</span></p>
-                            <p>Job: <span id="service">Carpenter</span></p>
-                            <p>Feedback: <span id="feedback">Good job. My bed now feels newer.</span></p>
-                            <div class="date" id="date">25/01/2021</div>
-
-
-                        </div>
-            </div>
-            
+    <!-- body -->
+    <div class="main-index">
+        <h1>Donate Us</h1>
+        <h6>The money collected will be offered to the service people here as bonuses and rewards.</h6>
     </div>
-    <!-- footer -->
-    <footer class="footer">
-        <div class="social">
+    <div class="container" style="margin-top: 50px;">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <img src="/media/customer/images/5990-1.jpg" alt="7209771799" style="width: 400px; height: auto;">
+        </div>
+        <div class="col-md-4"></div>
+
+        </div>
+      </div>
+    </div>
+<!-- footer     -->
+        <footer class="footer">
+          <div class="social">
             <a href="https://www.facebook.com/Cynergy-180036667042091" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
                 alt=""></a>
         <a href="https://www.instagram.com/invites/contact/?i=1xih8njqsuwpu&utm_content=kxk5sio" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
@@ -106,18 +134,11 @@
         <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" ></a>
         <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
                 alt=""></a>
-
-
-        </div>
-        <div id="copy">
-            <p class="copy">Copyright © CYNERGY 2021</p>
-        </div>
-    </footer>
-
-
-
-
-
+          <div id="copy">
+              <p class="copy">Copyright © CYNERGY 2021</p>
+          </div>
+      </footer>
+      </div>
+  </header>
 </body>
-
 </html>

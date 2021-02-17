@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
 from .models import Serviceinfo
-from customer.models import Contact
+from customer.models import Contact,Custom_order,Customer_random
 # Create your views here.
 
 
@@ -163,7 +163,26 @@ def notification(request):
     B =Serviceinfo.objects.get(email = K[0])
     
     if B.loginstate == "yes":
-        
+    
         return render(request,'serviceman/worker-notif.html')
     else:
-        return HttpResponse("<script>window.location = '/customer/login'</script>")
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+
+def history(request):
+    B = Serviceinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        
+        return render(request,'serviceman/worker_history_page.html')
+    else:
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")
+
+
+def donateus(request):
+    B = Serviceinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        
+        return render(request,'serviceman/donate.html')
+    else:
+        return HttpResponse("<script>window.location = '/serviceman/login'</script>")

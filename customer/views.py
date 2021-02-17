@@ -228,3 +228,12 @@ def history(request):
         return render(request,'customer/customer_history_page.html')
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
+
+def donate(request):
+    B = Custinfo.objects.get(email = K[0])
+    
+    if B.loginstate == "yes":
+        
+        return render(request,'customer/donate.html')
+    else:
+        return HttpResponse("<script>window.location = '/customer/login'</script>")

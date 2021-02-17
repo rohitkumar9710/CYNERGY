@@ -16,6 +16,7 @@ urlpatterns = [
     path("login/loggedin/services/search/random_data",views.random_data,name = "services_random_data"),
     path("login/loggedin/notification",views.notification,name = "notification"),  
     path("login/loggedin/history",views.history,name = "history"),  
+    path("login/loggedin/donate",views.donate,name = "donate"),  
     path("login/loggedin/contact",views.contact,name = "contact"),  
     path("login/loggedin/contact/contact_status",views.contact_submit,name = "contact_submit"),  
     path("login/loggedin/logout",views.logout,name = "logout"),  

@@ -24,6 +24,7 @@ urlpatterns = [
     path("",views.home, name = "home"),
     path("aboutus",views.about, name = "about"),
     path("contactus",views.contact, name = "contact"),
+    path("donate",views.donate, name = "donate"),
     path("contactus/status",views.contact_status, name = "contactstatus"),
     path('customer/', include('customer.urls')),
     path('serviceman/', include('serviceman.urls')),

@@ -20,3 +20,7 @@ def contact_status(request):
     comment = Contact(name = name2, email = email2, subject = subject2, comment = comment2,date = timezone.now())
     comment.save()
     return HttpResponse("<script>window.location = '/';window.alert('Your message sent succesfully');</script>")
+
+
+def donate(request):
+    return render(request, 'cynergy/donate.html')
