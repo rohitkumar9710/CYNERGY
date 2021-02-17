@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from customer.models import Custinfo,Custom_order
+from customer.models import Custinfo,Custom_order,Customer_random
 from customer.models import Contact
 from serviceman.models import Serviceinfo
 from django.utils import timezone
@@ -39,7 +39,7 @@ def status(request):
 
 def login(request):
     return render(request, 'customer/login.html')    
-
+  
 def profile_customer(request):
     email1 = request.POST.get('email')
     password1 = request.POST.get('passwd')
@@ -54,7 +54,7 @@ def profile_customer(request):
             return HttpResponse("<script>window.location = '/customer/login/loggedin/services'</script>")
         else:
             
-            return HttpResponse("<script>window.location = '/customer/login'</script>")
+            return HttpResponse('<script>window.location = "/customer/login";window.alert("Your Password is wrong ");</script>')
     else:
         return HttpResponse("no accout with this email id , please check your email or creat one ")        
 
@@ -183,9 +183,23 @@ def search(request):
                 return HttpResponse("Entered Wrong information")
             
         elif button22 == "on":
-            return HttpResponse("randomsearch page") 
+            l = lst.index('on')
+            print(l,services[l])
+            service = services[l]
+            return render(request,'customer/random _search.html',{"work":service}) 
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
+
+def random_data(request):
+    work2 = request.POST.get('job')
+    deadline_date2 = request.POST.get('deadline_date')
+    address2 = request.POST.get('address')
+    description2 = request.POST.get('description')
+    A = [work2,deadline_date2,address2,description2]
+    print(A)
+    data = Customer_random(customer_email = K[0],request_date= timezone.now(),deadline_date=deadline_date2,work_address=address2,work_description=description2)
+    data.save()
+    return HttpResponse("<script>window.location = '/customer/login/loggedin/services'</script>")
 
 def search_request(request):
     B = Custinfo.objects.get(email = K[0])

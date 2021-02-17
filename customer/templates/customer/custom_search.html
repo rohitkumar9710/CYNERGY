@@ -117,10 +117,17 @@
                     <p>Mobile No. <span class="phone"> {{i.phone_no}}</span></p>
                     <!-- <p>No. of tasks done: <span id="no_of_tasks_done"></span>5</p> -->
                     <p class="date" id="date">On this platform since : {{i.sign_up_date}}</p>
+
                     <form method = "POST" action = "/customer/login/loggedin/services/search/request">{% csrf_token %}
                     <input type="text" value={{i.email}} name="request"  style="display: none">
+                    
+                    <label class="control-label col-sm-2" for="lname">Deadline: </label>
+                    <div class="col-sm-2">          
+                    <input type="date" name="deadline_date" required class="form-control" id="ldate" placeholder="DD/MM/YYYY" name="lname">
+                    </div>
+                    
                     <button  type="submit"  id="myButton1" 
-                        style="background-color: #c6c6db; "></button></form>
+                        style="background-color: #c6c6db; margin-top: 5px; ">REQUEST</button></form>
                     <!-- <script>
                         function change() // no ';' here
                         {
@@ -151,13 +158,13 @@
     <!-- footer -->
     <footer class="footer">
         <div class="social">
-            <a href="https://www.facebook.com/Cynergy-180036667042091" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
-                alt=""></a>
-              <a href="https://www.instagram.com/invites/contact/?i=1xih8njqsuwpu&utm_content=kxk5sio" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
-                      alt=""></a>
-              <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" ></a>
-              <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
-                      alt=""></a>
+            <a href="#" class="facebook" title="Facebook"><img src="{% static 'pics/img-footer/icons8-facebook-48.png' %}"
+                    alt=""></a>
+            <a href="#" class="instagram" title="Instagram"><img src="{% static 'pics/img-footer/icons8-instagram-50.png' %}"
+                    alt=""></a>
+            <a href="#" class="email" title="Email"><img src="{% static 'pics/img-footer/icons8-email-48.png' %}" alt=""></a>
+            <a href="#" class="github" title="Github"><img src="{% static 'pics/img-footer/icons8-github-90.png' %}"
+                    alt=""></a>
 
         </div>
         <div id="copy">
