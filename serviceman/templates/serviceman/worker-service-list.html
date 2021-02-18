@@ -122,7 +122,11 @@
 
                         <label class="switch">
                             <img src="{% static 'pics/img-customer-service-list/icons8-drill-96.png' %}" alt="Carpenter">
+                            {% if a %}
                             <input type="checkbox" id="togBtn" name="carpenter" >
+                            {% else %}
+                            <input type="checkbox" id="togBtn" checked name="carpenter" >
+                            {% endif %}
                             <div class="slider round"></div>
                         </label>
                         <div class="name">
@@ -136,8 +140,10 @@
                         <label class="switch">
                             <img src="{% static 'pics/img-customer-service-list/icons8-screwdriver-96.png' %}"
                                 alt="Electrician">
-
-                            <input type="checkbox" id="togBtn" checked name= "electrician">
+                                {% if d %}<input type="checkbox" id="togBtn"  name= "electrician">
+                                {% else %}<input type="checkbox" id="togBtn" checked name= "electrician">
+                                {% endif %}
+                            
                             <div class="slider round"></div>
                         </label>
                         <div class="name">
@@ -150,7 +156,9 @@
 
                         <label class="switch">
                             <img src="{% static 'pics/img-customer-service-list/icons8-water-pipe-96.png' %}" alt="Plumber">
-                            <input type="checkbox" id="togBtn" name = "plumber">
+                            {% if c %}<input type="checkbox" id="togBtn" name = "plumber">
+                            {% else %}<input type="checkbox" id="togBtn" checked name = "plumber">
+                            {% endif %}
                             <div class="slider round"></div>
                         </label>
                         <div class="name">
@@ -163,7 +171,9 @@
 
                         <label class="switch">
                             <img src="{% static 'pics/img-customer-service-list/icons8-teapot-96.png' %}" alt="Kitchen">
-                            <input type="checkbox" id="togBtn" name = "kitchen">
+                            {% if f %}<input type="checkbox" id="togBtn" name = "kitchen">
+                            {% else %}<input type="checkbox" checked id="togBtn" name = "kitchen">
+                            {% endif %}
                             <div class="slider round"></div>
                         </label>
                         <div class="name">
@@ -176,7 +186,9 @@
 
                         <label class="switch">
                             <img src="{% static 'pics/img-customer-service-list/icons8-broom-96.png' %}" alt="Cleaning">
-                            <input type="checkbox" id="togBtn" name= "cleaning">
+                            {% if b %}<input type="checkbox" id="togBtn" name= "cleaning">
+                            {% else %}<input type="checkbox" checked id="togBtn" name= "cleaning">
+                            {% endif %}
                             <div class="slider round"></div>
                         </label>
                         <div class="name">
@@ -190,7 +202,9 @@
                         <label class="switch">
                             <img src="{% static 'pics/img-customer-service-list/icons8-engineering-96.png' %}"
                                 alt="Technician">
-                            <input type="checkbox" id="togBtn" checked name="technecian" >
+                            {% if e %}<input type="checkbox" id="togBtn"  name="technecian" >
+                            {% else %}<input type="checkbox" id="togBtn" checked name="technecian" >
+                            {% endif %}
                             <div class="slider round"></div>
                         </label>
                         <div class="name">

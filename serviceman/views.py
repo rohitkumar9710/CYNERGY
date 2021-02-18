@@ -72,7 +72,9 @@ def services(request):
     if k == "yes":
         S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
         l = len(S)
-        return render(request, 'serviceman/worker-service-list.html',{"len":l})
+        L = [B.carpenter=="None",B.cleaning=="None",B.plumber=="None",B.electrecian=="None",B.technecian=="None",B.kitchen=="None"]
+        
+        return render(request, 'serviceman/worker-service-list.html',{"len":l,"a":L[0],"b":L[1],"c":L[2],"d":L[3],"e":L[4],"f":L[5]})
     else:
         return HttpResponse("<script>window.location = '/serviceman/login'</script>")
 

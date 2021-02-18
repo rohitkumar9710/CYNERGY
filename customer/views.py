@@ -157,28 +157,55 @@ def search(request):
             service = services[l]
             if service == 'cleaning':
                 service_data = Serviceinfo.objects.filter(cleaning='on')
-                print(service_data)
-                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
+                order_data = Custom_order.objects.filter(customer_email=K[0],work='cleaning')
+                list1= [i.serviceman_email for i in order_data]
+                list2 = [i.email for i in service_data]
+                list3 = list(set(list2)-set(list1))
+                list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
+                print(service_data,list1,list2,list3,list4)
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
             elif service == 'technecian':
                 service_data = Serviceinfo.objects.filter(technecian='on')
+                order_data = Custom_order.objects.filter(customer_email=K[0],work='technecian')
+                list1= [i.serviceman_email for i in order_data]
+                list2 = [i.email for i in service_data]
+                list3 = list(set(list2)-set(list1))
+                list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
                 print(service_data)    
-                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
             elif service == 'plumber':
                 service_data = Serviceinfo.objects.filter(plumber='on')
+                order_data = Custom_order.objects.filter(customer_email=K[0],work='plumber')
+                list1= [i.serviceman_email for i in order_data]
+                list2 = [i.email for i in service_data]
+                list3 = list(set(list2)-set(list1))
+                list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
                 print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
             elif service == 'electrecian':
                 service_data = Serviceinfo.objects.filter(electrecian='on')
-                print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
+                order_data = Custom_order.objects.filter(customer_email=K[0],work='electrecian')
+                list1= [i.serviceman_email for i in order_data]
+                list2 = [i.email for i in service_data]
+                list3 = list(set(list2)-set(list1))
+                list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
             elif service == 'carpenter':
                 service_data = Serviceinfo.objects.filter(carpenter='on')
-                print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
+                order_data = Custom_order.objects.filter(customer_email=K[0],work='carpenter')
+                list1= [i.serviceman_email for i in order_data]
+                list2 = [i.email for i in service_data]
+                list3 = list(set(list2)-set(list1))
+                list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
             elif service == 'kitchen':
                 service_data = Serviceinfo.objects.filter(kitchen='on')
-                print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":service_data,'job':service})
+                order_data = Custom_order.objects.filter(customer_email=K[0],work='kitchen')
+                list1= [i.serviceman_email for i in order_data]
+                list2 = [i.email for i in service_data]
+                list3 = list(set(list2)-set(list1))
+                list4 = [ Serviceinfo.objects.get(email=i) for i in list3] 
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
             else:
                 return HttpResponse("Entered Wrong information")
             
@@ -217,7 +244,7 @@ def notification(request):
     
     if B.loginstate == "yes":
         not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
-        #not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")        
+        not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")        
         data = {"notification":not1.reverse()}
         return render(request,'customer/cust-notif.html',data)
     else:
