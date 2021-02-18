@@ -6,6 +6,7 @@ https://drive.google.com/drive/folders/1GH9Olh49CurlLMasK5Dk0MdTdBShA6yc?usp=sha
 
 This is the whole flowline of the cycle:
  Customer
+ ![Optional Text](https://github.com/rohitkumar9710/CYNERGY/blob/main/media/customer/images/5990-1.jpg)
 1.	When you first land on our website you will see two options which include, sign in or sign up. If you already have an account you may select sign in and fill in the details of your existing account. On the other hand, if you don't have an account you may select sign up and create a new account by filling in the required details.
 2.	After fillings in the details, you will receive an OTP on your registered email ID. Please carefully fill the OTP and we advise you to not share it with anyone.
 3.	Upon successfully logging in to your existing account or creating a new account you will be redirected to our home page.
