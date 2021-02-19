@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
 from .models import Serviceinfo
-from customer.models import Contact,Custom_order,Customer_random
+from customer.models import Contact,Custom_order,Customer_random,Feedback
 import datetime
 # Create your views here.
 
@@ -133,7 +133,12 @@ def profile(request):
     if B.loginstate == "yes":
         S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
         l = len(S)
-        data = {"name":B.name,"gender":B.gender,"date":B.sign_up_date,"len":l,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
+        A = Feedback.objects.filter(serviceman_email=K[0])
+        lst = []
+        for i in A:
+            lst.append(i.rating)
+        avr_rating = sum(lst)/len(lst)    
+        data = {"name":B.name,"rating":avr_rating,"gender":B.gender,"date":B.sign_up_date,"len":l,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
         return render(request,'serviceman/service-profile.html',data)
         
     else:
@@ -208,7 +213,8 @@ def history(request):
     if B.loginstate == "yes":
         S = Custom_order.objects.filter(serviceman_email=K[0],accept_status="None")
         l = len(S)
-        return render(request,'serviceman/worker_history_page.html',{"len":l})
+        A = Feedback.objects.filter(serviceman_email=K[0])
+        return render(request,'serviceman/worker_history_page.html',{"len":l,"data":A})
     else:
         return HttpResponse("<script>window.location = '/serviceman/login'</script>")
 

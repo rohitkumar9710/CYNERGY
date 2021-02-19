@@ -306,8 +306,8 @@ def history(request):
     not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
     A = len(not1)+len(not2)    
     if B.loginstate == "yes":
-        
-        return render(request,'customer/customer_history_page.html',{"len":A})
+        B = Feedback.objects.filter(customer_email=K[0])
+        return render(request,'customer/customer_history_page.html',{"len":A,"data":B})
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
 

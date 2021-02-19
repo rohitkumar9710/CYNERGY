@@ -118,30 +118,23 @@
             <h1>Your History</h1>
         </div>
         <div class="container-fluid">
+        {% for i in data %}
             <div class="jumbotron">
-                        <div class="history-items">
-                            <h3>Service <span id=service_number>1</span></h3>
-                            <p>Serviceman name: <span id="serviceman_name"> Mr. Ram Kumar Yadav</span></p>
-                            <p>Serviceman ID: <span id="serviceman_id">123456</span></p>
-                            <p>Job: <span id="service">Carpenter</span></p>
-                            <p>Feedback: <span id="feedback">Good job. My bed now feels newer.</span></p>
-                            <div class="date" id="date">25/01/2021</div>
+                
+                <div class="history-items">
+                    <h4>Date : {{i.feedback_date}}</h4>
+                    
+                    <p>Serviceman email: <span id="serviceman_name"> {{i.serviceman_email}}</span></p>
+                    
+                    <p>Job: <span id="service">{{i.work}}</span></p>
+                    <p>Feedback: <span id="feedback">{{i.feedback}}</span></p>
+                    <p>Rating: <strong> {{i.rating}} </strong></p>
+                    <div class="date" id="date">Service date : {{i.w_done_date}} </div>
 
 
-                        </div>
-            </div>
-            <div class="jumbotron">
-                        <div class="history-items">
-                            <h3>Service <span id=service_number>1</span></h3>
-                            <p>Serviceman name: <span id="serviceman_name"> Mr. Ram Kumar Yadav</span></p>
-                            <p>Serviceman ID: <span id="serviceman_id">123456</span></p>
-                            <p>Job: <span id="service">Carpenter</span></p>
-                            <p>Feedback: <span id="feedback">Good job. My bed now feels newer.</span></p>
-                            <div class="date" id="date">25/01/2021</div>
-
-
-                        </div>
-            </div>
+                </div>
+            </div>{% endfor %}
+            
     </div>
     <!-- footer -->
     <footer class="footer">
