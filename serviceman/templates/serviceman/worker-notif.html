@@ -134,13 +134,13 @@
                         <input type="text" name="job1" value={{i.work}} style="display: None;"> 
                         <input type="hidden" name="desc1"  value='{{i.request_date|date:"Y-m-d"}}' style="display: None;">
         
-                        <button type="submit">Accept</button>
+                        <button type="submit" class="btn cancel" style="background-color: rgba(0, 255, 21, 0.281); margin: 5px; width: 200px;"  >Accept</button>
                     </form>
                     <form method="POST" action="/serviceman/login/loggedin/notification/req_rejected"> {% csrf_token %}
                         <input type="text" name="name1" value= {{i.customer_name}} style="display: None;"> 
                         <input type="text" name="job1" value={{i.work}} style="display: None;"> 
                         <input type="hidden" name="desc1"  value='{{i.request_date|date:"Y-m-d"}}' style="display: None;">
-                         <button type="submit">Reject</button>
+                         <button type="submit" class="btn cancel" style="background-color: rgba(255, 0, 0, 0.315); margin: 5px; width: 200px;" >Reject</button>
                     </form>
                     <script>
                         function change1() // no ';' here

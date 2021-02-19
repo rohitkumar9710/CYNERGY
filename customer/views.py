@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from customer.models import Custinfo,Custom_order,Customer_random
-from customer.models import Contact
+from customer.models import Contact,Feedback
 from serviceman.models import Serviceinfo
 from django.utils import timezone
 # Create your views here.
@@ -61,8 +61,11 @@ def profile_customer(request):
 def services(request):
     B = Custinfo.objects.get(email = K[0])
     k = B.loginstate
+    not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+    not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+    A = len(not1)+len(not2)    
     if k == "yes":
-        return render(request, 'customer/customer-service-list.html')
+        return render(request, 'customer/customer-service-list.html',{"len":A})
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")    
 
@@ -70,14 +73,20 @@ def about(request):
     B = Custinfo.objects.get(email = K[0])
     k = B.loginstate
     if k == "yes":
-        return render(request, 'customer/about_us.html')
+        not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+        not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+        A = len(not1)+len(not2)    
+        return render(request, 'customer/about_us.html',{"len":A})
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")   
 
 def profile(request):
     B = Custinfo.objects.get(email = K[0])
     k = B.loginstate
-    data = {"name":B.cust_name,"gender":B.gender,"date":B.sign_up_date,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
+    not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+    not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+    A = len(not1)+len(not2)    
+    data = {"name":B.cust_name,"gender":B.gender,"date":B.sign_up_date,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password,"len":A}
     if k == "yes":
         return render(request,'customer/cust_profile.html',data)
     else:
@@ -118,8 +127,11 @@ def logout(request):
 def contact(request):
     B = Custinfo.objects.get(email = K[0])
     k = B.loginstate
+    not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+    not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+    A = len(not1)+len(not2)    
     if k == "yes":
-        return render(request, 'customer/contact_us.html')
+        return render(request, 'customer/contact_us.html',{"len":A})
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
 
@@ -150,6 +162,9 @@ def search(request):
         button22 = request.POST.get('button2')
         lst = [cleaning2,technecian2,plumber2,electrecian2,carpenter2,kitchen2]
         services = ['cleaning','technecian','plumber','electrecian','carpenter','kitchen']
+        not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+        not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+        A = len(not1)+len(not2)    
         if button12 == "on":
             print(lst)
             l = lst.index('on')
@@ -163,7 +178,7 @@ def search(request):
                 list3 = list(set(list2)-set(list1))
                 list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
                 print(service_data,list1,list2,list3,list4)
-                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service,"len":A})
             elif service == 'technecian':
                 service_data = Serviceinfo.objects.filter(technecian='on')
                 order_data = Custom_order.objects.filter(customer_email=K[0],work='technecian')
@@ -172,7 +187,7 @@ def search(request):
                 list3 = list(set(list2)-set(list1))
                 list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
                 print(service_data)    
-                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service,"len":A})
             elif service == 'plumber':
                 service_data = Serviceinfo.objects.filter(plumber='on')
                 order_data = Custom_order.objects.filter(customer_email=K[0],work='plumber')
@@ -181,7 +196,7 @@ def search(request):
                 list3 = list(set(list2)-set(list1))
                 list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
                 print(service_data) 
-                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service,"len":A})
             elif service == 'electrecian':
                 service_data = Serviceinfo.objects.filter(electrecian='on')
                 order_data = Custom_order.objects.filter(customer_email=K[0],work='electrecian')
@@ -189,7 +204,7 @@ def search(request):
                 list2 = [i.email for i in service_data]
                 list3 = list(set(list2)-set(list1))
                 list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
-                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service,"len":A})
             elif service == 'carpenter':
                 service_data = Serviceinfo.objects.filter(carpenter='on')
                 order_data = Custom_order.objects.filter(customer_email=K[0],work='carpenter')
@@ -197,7 +212,7 @@ def search(request):
                 list2 = [i.email for i in service_data]
                 list3 = list(set(list2)-set(list1))
                 list4 = [ Serviceinfo.objects.get(email=i) for i in list3]
-                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service,"len":A})
             elif service == 'kitchen':
                 service_data = Serviceinfo.objects.filter(kitchen='on')
                 order_data = Custom_order.objects.filter(customer_email=K[0],work='kitchen')
@@ -205,7 +220,7 @@ def search(request):
                 list2 = [i.email for i in service_data]
                 list3 = list(set(list2)-set(list1))
                 list4 = [ Serviceinfo.objects.get(email=i) for i in list3] 
-                return render(request,'customer/custom_search.html',{"data":list4,'job':service})
+                return render(request,'customer/custom_search.html',{"data":list4,'job':service,"len":A})
             else:
                 return HttpResponse("Entered Wrong information")
             
@@ -213,7 +228,7 @@ def search(request):
             l = lst.index('on')
             print(l,services[l])
             service = services[l]
-            return render(request,'customer/random _search.html',{"work":service}) 
+            return render(request,'customer/random _search.html',{"work":service,"len":A}) 
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
 
@@ -239,31 +254,70 @@ def search_request(request):
     
     return HttpResponse('<script>window.location = "/customer/login/loggedin/services";window.alert("Your request sent succesfully");</script>')
 
+
+
+
+
+
+#*********************************notifications*********************************************************************************************
 def notification(request):
     B = Custinfo.objects.get(email = K[0])
     
     if B.loginstate == "yes":
         not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
-        not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")        
-        data = {"notification":not1.reverse()}
+        not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+        A = len(not1)+len(not2)      
+        data = {"noti1":not1.reverse(),"noti2":not2.reverse(),"len":A}
+        
         return render(request,'customer/cust-notif.html',data)
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
 
+def cencle_button(request):
+    a = request.POST.get('email1')
+    b = request.POST.get('work1')
+    c = request.POST.get('date1')
+    data = Custom_order.objects.get(customer_email=K[0],serviceman_email=a,work=b,request_date=c)
+    data.delete()
+    return HttpResponse("<script>window.location = '/customer/login/loggedin/services';window.alert('Your request CANCLED succesfully');</script>")
+
+
+def feedback(request):
+    a = request.POST.get('s_mail')
+    b = request.POST.get('work1')
+    c = request.POST.get('r_date')
+    d = request.POST.get('complete_date')
+    e = request.POST.get('rating')
+    f = request.POST.get('feedback-text')
+    if a  == "None" or b == "None" or c == "None":
+         return HttpResponse("<script>window.location = '/customer/login/loggedin/notification';window.alert('Wrong Information');</script>")
+    else:
+        order = Custom_order.objects.get(customer_email=K[0],serviceman_email=a,work=b,request_date=c)
+        order.delete()
+        feedback = Feedback(customer_email=K[0],serviceman_email=a,feedback=f,work=b,request_date = c,feedback_date=timezone.now(),rating = e,w_done_date=d)
+        feedback.save()
+        print(a,b,c,d,e,f)
+        return HttpResponse("<script>window.location = '/customer/login/loggedin/notification';window.alert('Thank you for your feedback');</script>")
+
+#**************************************remaining******************************************************************************************************
 def history(request):
     B = Custinfo.objects.get(email = K[0])
-    
+    not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+    not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+    A = len(not1)+len(not2)    
     if B.loginstate == "yes":
         
-        return render(request,'customer/customer_history_page.html')
+        return render(request,'customer/customer_history_page.html',{"len":A})
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")
 
 def donate(request):
     B = Custinfo.objects.get(email = K[0])
-    
+    not1 = Custom_order.objects.filter(customer_email=K[0],accept_status="None")
+    not2 = Custom_order.objects.filter(customer_email=K[0],accept_status="Accepted")  
+    A = len(not1)+len(not2)    
     if B.loginstate == "yes":
         
-        return render(request,'customer/donate.html')
+        return render(request,'customer/donate.html',{"len":A})
     else:
         return HttpResponse("<script>window.location = '/customer/login'</script>")

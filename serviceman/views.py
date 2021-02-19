@@ -184,9 +184,10 @@ def req_accept(request):
     name2 = request.POST.get('name1')
     work2 = request.POST.get('job1')
     desc2 = request.POST.get('desc1')
-    #date = datetime.datetime.strptime(desc2, '%m/%d/%Y').strftime('%m/%d/%Y')
+    
     X = Custom_order.objects.get(customer_name=name2,work=work2,request_date=desc2)
     X.accept_status = "Accepted"
+    X.accept_date = timezone.now()
     X.save()
     return HttpResponse("<script>window.location = '/serviceman/login/loggedin/notification';window.alert('You accepted the work, kindly contact him and ask other information and Complete his/her work');</script>")
 

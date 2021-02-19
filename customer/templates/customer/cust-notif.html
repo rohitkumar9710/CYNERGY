@@ -54,7 +54,7 @@
                         <a class="nav-link notification " href="/customer/login/loggedin/notification" id="navbarDropdown" role="button" 
                         aria-expanded="false">
                         Notification
-                            <!-- <span class="badge">1</span> -->
+                            <span class="badge">{{len}}</span> 
                         </a> 
                         <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/customer/login/loggedin/notification">You Requested  electrecian Ram Das </a></li>
@@ -117,7 +117,7 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                {% for i in notification %}
+                {% for i in noti1 %}
                 <div class="col-12">
                     <div class="jumbotron">
 
@@ -128,10 +128,16 @@
                             <p class="indent">Phone: {{i.serviceman_phone}}</p>
                             <p>Email: {{i.serviceman_email}}</p>
                             <p>We hope you recieve a great service.</p>
-                            <input onclick="change1()" type="button" value="Cancel Request" id="myButton1"
-                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px; "></input>
+                            <form action="/customer/login/loggedin/notification/cencle_button" method="post"> {% csrf_token %}
+                                <input type="email" name="email1" value="{{i.serviceman_email}}" style="display: none;">
+                                <input type="text" name="work1" value="{{i.work}}" style="display: none;">
+                                <input type="datetime" name="date1" value='{{i.request_date|date:"Y-m-d"}}' style="display: none;">
+                                <button type="submit" class="btn cancel" style="background-color: rgba(214, 45, 45, 0.37);" >Cancel</button>
+                            </form>
+                            <!-- <input onclick="change1()" type="button" value="Cancel Request" id="myButton1"
+                        style="background-color: #c6c6db; float: left; margin: 0px 20px 0px 20px; padding: 5px; "></input> -->
 
-                        <script>
+                        <!-- <script>
                         function change1() // no ';' here
                         {
                             var elem1 = document.getElementById("myButton1");
@@ -139,44 +145,64 @@
                             if (elem1.value == "Cancel Request")  {
                                 elem1.value = "Cancelled"; elem1.style.backgroundColor = "red"; elem1.style.color = "white";
                             }
-                        }</script>
-                            <!-- <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p> -->
+                        }</script> -->
+                            <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
                 
+                {% for i in noti2 %}
                 <div class="col-12">
                     <div class="jumbotron">
                         <div class="notif-item">
-                            <h5>Mr Ram Das accepted your request</h5>
-                            <p>Job: Electrecian</p>
+                            <h5>{{i.serviceman_name}} accepted your request</h5>
+                            <p>Job: {{i.work}}</p>
                             <p style="font-weight: 800;">Here are the contact details:</p>
-                            <p class="indent">Phone: 8413853393</p>
-                            <p>Email:  ramdas@gmail.com</p>
+                            <p class="indent">Phone:{{i.serviceman_phone}}</p>
+                            <p class="indent">Request Date : {{i.request_date}}</p>
+                            <p>Email:  {{i.serviceman_email}}</p>
                             <p>He/She will be contacting you anytime soon. You may contact him/her too.</p>
                             <p>We hope you recieve a great service.</p>
                             <p style="font-weight: 800;"> Click on the button on the corner to give your feedback.</p>
 
                         </div>
                     </div>
+                    
                 </div>
+                {% endfor %}
                 
                        <!-- feedback form -->
                 <div class="col-4">
-                            <button class="open-button" onclick="openForm()">Feedback Form</button>
+                        <button class="open-button" onclick="openForm()">Feedback Form</button>
                             <div class="form-popup" id="myForm">
-                                <form action="" class="form-container">
+                                <form action="/customer/login/loggedin/notification/feedback" class="form-container" method="POST"> {% csrf_token %}
                                     <h1>Feedback</h1>
+                                    <select class="custom-select" name="s_mail" id="rating">
+                                        <option value="None" selected>Serviceman Email</option>
+                                        {% for i in noti2 %}
+                                        <option value={{i.serviceman_email}}>{{i.serviceman_email}}</option>
+                                        {% endfor %}
+                                    </select>
 
-                                    <input type="name" placeholder="Serviceman name" name="name" required class="form-control">
-                                    <input type="email" placeholder="Serviceman's email" name="name" required class="form-control">
+                                    <select class="custom-select" name="work1">
+                                    <option selected value="None">Work</option>
+                                    {% for i in noti2 %}
+                                    <option value={{i.work}}>{{i.work}}</option>
+                                    {% endfor %}
+                                    </select>
+
+                                     
+                                    <select class="custom-select" name="r_date">
+                                    <option value="None">Request Date</option>
+                                    {% for i in noti2 %}<option value={{i.request_date|date:"Y-m-d"}}>{{i.request_date}}</option>{% endfor %}
+                                    </select>
                                     
-                                     <p>Date of Service:</p>            
-                                    <input type="date" name="deadline_date" required class="form-control" id="ldate" placeholder="DD/MM/YYYY" name="lname">
+                                    <p>Date of Service:</p>            
+                                    <input type="date" name="complete_date" required class="form-control" id="ldate" placeholder="DD/MM/YYYY" name="lname">
                                         
                                     <label for="rating"><b>Rate the service: </b></label>
-                                    <select class="custom-select" id="rating">
+                                    <select class="custom-select" name="rating" id="rating">
                                         <option value="5" selected>5</option>
                                         <option value="4">4</option>
                                         <option value="3">3</option>
@@ -190,7 +216,7 @@
                                 </form>
                             </div>
 
-                        </div>
+                </div>
                     
             </div>
         </div>

@@ -68,3 +68,13 @@ class Customer_random(models.Model):
 
     def __str__(self):
         return self.customer_email
+
+class Feedback(models.Model):
+    customer_email = models.CharField(max_length = 150)
+    serviceman_email = models.CharField( max_length=150,default="none")
+    feedback = models.CharField(default = "None", max_length=1000)
+    work = models.CharField(default = "", max_length=50)
+    request_date = models.DateField()
+    feedback_date = models.DateField()
+    w_done_date = models.DateField()
+    rating = models.IntegerField(default=3)
