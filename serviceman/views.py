@@ -137,7 +137,10 @@ def profile(request):
         lst = []
         for i in A:
             lst.append(i.rating)
-        avr_rating = sum(lst)/len(lst)    
+        if len(lst) == 0:
+            avr_rating = "No Rating "
+        else:
+            avr_rating = sum(lst)/len(lst)    
         data = {"name":B.name,"rating":avr_rating,"gender":B.gender,"date":B.sign_up_date,"len":l,"primaryjob":B.primary_work,"secondaryjob":B.secondary_work,"email":B.email,"phoneno":B.phone_no,"address":B.addres,"city":B.city,"state":B.state,"password":B.password}
         return render(request,'serviceman/service-profile.html',data)
         
