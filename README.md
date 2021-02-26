@@ -9,6 +9,7 @@ https://drive.google.com/drive/folders/1GH9Olh49CurlLMasK5Dk0MdTdBShA6yc?usp=sha
 ### Guide to the website
 
 # Sign Up
+#### Note: The OTP is 1234 for now.
 
 ## FlowChart of Signing In
 
